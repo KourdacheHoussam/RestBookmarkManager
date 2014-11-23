@@ -1,9 +1,26 @@
 package fr.tp.houssam.bookmarkmanager.rest;
 
-public class TestClass {
-	
-	public static void main(){
-	System.out.println("another try");
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.UriInfo;
 
+@Path("hello")
+public class HelloExample {
+	
+	@Context 
+	private UriInfo context;
+
+	/** Constructor */
+	public HelloExample(){
+		
 	}
+	
+	@GET
+	@Produces("text/html")
+	public String getHtml(){
+		return "<html lang=\"en\"><body><h1>Hello everybody</h1></body></html> ";
+	}
+	
 }
