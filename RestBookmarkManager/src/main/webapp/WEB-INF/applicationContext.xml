@@ -6,4 +6,37 @@
 	http://www.springframework.org/schema/context/spring-context-3.0.xsd http://www.springframework.org/schema/tx
 	http://www.springframework.org/schema/tx/spring-tx-3.0.xsd http://www.springframework.org/schema/aop
 	http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+
+
+	<!-- Le répertoire à scanner pour chercher les controleurs -->
+	<context:component-scan base-package="fr.tp.bookmarkmanager.rest" />
+	
+	<!-- La configuration de la JPA -->
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory" />
+	</bean>
+	<bean id="entityManagerFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="persistenceXmlLocation" value="classpath:config/persistence-demo.xml" />
+		<property name="dataSource" ref="restDemoDS" />
+		<property name="packagesToScan" value="fr.tp.houssam.bookmarkmanager.rest*" />
+		<property name="jpaVendorAdapter">
+			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+				<property name="showSql" value="true" />
+				<property name="databasePlatform" value="org.hibernate.dialect.MySQLDialect" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="podcastDao" class="org.codingpedia.demo.rest.dao.impl.PodcastDaoJPA2Impl" />
+	<bean id="podcastRestService" class="org.codingpedia.demo.rest.service.PodcastRestService">
+		<property name="podcastDao" ref="podcastDao" />
+	</bean>
+
+	<bean id="restDemoDS" class="org.springframework.jndi.JndiObjectFactoryBean"
+		scope="singleton">
+		<property name="jndiName" value="java:comp/env/jdbc/restDemoDB" />
+		<property name="resourceRef" value="true" />
+	</bean>
 </beans>
