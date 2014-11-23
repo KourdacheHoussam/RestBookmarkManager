@@ -16,11 +16,14 @@
  */
 package fr.tp.houssam.bookmarkmanager.models;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 /**
  *
  * @author Housssam
  * @version 23 nov. 2014
  */
+@XmlRootElement
 public class BookMark {
 	private int id;
 	private String name;

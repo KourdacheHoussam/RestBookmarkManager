@@ -16,21 +16,16 @@
  */
 package fr.tp.houssam.bookmarkmanager.models;
 
-import java.util.List;
-
 import javax.xml.bind.annotation.XmlRootElement;
-
 
 /**
  *
  * @author Housssam
  * @version 23 nov. 2014
  */
+
 @XmlRootElement
-public class FavoriteBookmark {
-	private String id;
-	private String name;
-	private String description;
-	private List<Tag> tags;
-}
+public class Tag {
+	private String tag_value;
+}	
 

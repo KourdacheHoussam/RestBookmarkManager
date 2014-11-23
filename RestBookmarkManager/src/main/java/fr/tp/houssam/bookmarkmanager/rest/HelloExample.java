@@ -7,9 +7,23 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.UriInfo;
 
+/** @path permet au dispatcher de détecter 
+ * cet objet comme contrôleur
+ * et ainsi aiguiller la requete vers cette classe*/
+
 @Path("hello")
 public class HelloExample {
+	
+	/** on utilise @context pour JEersey reconnaisse l'object*/
+	@Context
+	private UriInfo context;
 
+	public HelloExample(){
+		//le constructeur permet d'être certain que l'instation par 
+		//réflexion sera possible
+		//c'est jersey qui s'occupe de l'intanciation de l'objet
+	}
+	
 	// This method is called if TEXT_PLAIN is request
 	@GET
 	@Produces(MediaType.TEXT_PLAIN)
