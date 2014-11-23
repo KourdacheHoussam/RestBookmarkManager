@@ -1,9 +1,9 @@
 /**
  * <p>
- * Copyright © 2014 THALES Communications, France. All rights reserved.
+ * Copyright © 2014 Houssam KOURDACHE, France. All rights reserved.
  * </p>
  * <p>
- * Ce document est la propriété de THALES Communications, France,
+ * Ce document est la propriété de Houssam kourdache, France,
  * il ne peut être ni reproduit, ni utilisé, ni communiqué, ni distribué
  * à des tiers sans son autorisation préalable.
  * </p>
@@ -15,6 +15,7 @@
  * 
  */
 package fr.tp.houssam.bookmarkmanager.common;
+
 
 /**
  *
@@ -40,4 +41,5 @@ public class RestPaths {
 	public static String set_tag_id="/tag/{id}";
 	
 }
+
 
