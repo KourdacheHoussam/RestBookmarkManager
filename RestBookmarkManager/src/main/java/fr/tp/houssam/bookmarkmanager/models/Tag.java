@@ -16,6 +16,12 @@
  */
 package fr.tp.houssam.bookmarkmanager.models;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -25,7 +31,14 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 
 @XmlRootElement
+@Entity
+@Table(name="tags")
 public class Tag {
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="tag_id")
+	private Integer id;
+	@Column(name="tag_value")
 	private String tag_value;
 }	
 
