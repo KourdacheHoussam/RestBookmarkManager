@@ -33,23 +33,29 @@ public interface BookMarksDAO {
 	
 	
 	/** ------------  Retriever (read) data --------- **/
-	//get all bookmarks
+	
+	/** get all bookmarks */
 	public List<BookMark> getBookmarks();
-	//get bookmark by id
+	/**get bookmark by id */
 	public BookMark getBookmarkByID(Integer ID);
-	//get favorite bookmarks
+	/**get favorite bookmarks */
 	public List<BookMark> getFavoriteBookmarks();
-	//get tags of favorite Bookmarks
+	/**get tags of favorite Bookmarks */
 	public List<Tag> getTags_of_favoriteBookMarks(Integer ID);
 	
 	/** ------------  write data --------------------- **/
-	//add bookmark
-	public void addBookMark(BookMark bookMark);
-	//add a favorite bookmark
+	
+	/**add bookmark */
+	public Integer addBookMark(BookMark bookMark);
+	/**add a favorite bookmark*/
 	public void addFavoriteBookmark(FavoriteBookmark favoriteBookmark);
-	//add à tag to à favorite book
+	/**add à tag to à favorite book*/
 	public void addTag_To_FavoriteBookmark(Tag tag);
 	
+	/** --------------  UPDATE DATA -----------------**/
+	
+	/**update bookmark*/
+	public int updateBookMark(BookMark bookMark);
 	
 }
 

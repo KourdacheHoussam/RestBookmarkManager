@@ -16,6 +16,7 @@
  */
 package fr.tp.houssam.bookmarkmanager.models;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -35,7 +36,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @XmlRootElement
 @Table(name="favoritebookmarks")
-public class FavoriteBookmark {
+public class FavoriteBookmark implements Serializable {
+	
+	// serial object version
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="favoritebookmark_id")

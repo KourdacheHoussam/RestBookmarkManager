@@ -16,6 +16,8 @@
  */
 package fr.tp.houssam.bookmarkmanager.models;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -33,7 +35,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @Entity
 @Table(name="tags")
-public class Tag {
+public class Tag implements Serializable{
+
+	private static final long serialVersionUID = -2L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="tag_id")

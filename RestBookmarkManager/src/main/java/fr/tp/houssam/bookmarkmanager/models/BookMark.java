@@ -16,6 +16,8 @@
  */
 package fr.tp.houssam.bookmarkmanager.models;
 
+import java.io.Serializable;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -40,7 +42,9 @@ import javax.persistence.Column;
 @Entity 
 @XmlRootElement
 @Table(name="bookmarks")
-public class BookMark {
+public class BookMark implements Serializable {
+	// serial version of object
+	private static final long serialVersionUID = 12L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="bookmark_id")

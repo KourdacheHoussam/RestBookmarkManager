@@ -78,7 +78,12 @@ public class DAO_JPA_Imp implements BookMarksDAO{
 	 * {@inheritDoc}
 	 */
 	
-	public void addBookMark(BookMark bookMark) {
+	public Integer addBookMark(BookMark bookMark) {
+		//persist bookMark in DB via the manager
+		entity_Manager.persist(bookMark);
+		//force insert to receive the id of insertion entity
+		entity_Manager.flush();
+		return bookMark.getId(); 
 	}
 
 	/**
@@ -93,6 +98,15 @@ public class DAO_JPA_Imp implements BookMarksDAO{
 	 */
 	
 	public void addTag_To_FavoriteBookmark(Tag tag) {
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	
+	public int updateBookMark(BookMark bookMark) {
+		entity_Manager.merge(bookMark);
+		return 1;
 	}
 
 }
