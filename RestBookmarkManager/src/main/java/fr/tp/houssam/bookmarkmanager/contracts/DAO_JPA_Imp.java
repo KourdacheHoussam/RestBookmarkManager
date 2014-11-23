@@ -23,6 +23,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
 import fr.tp.houssam.bookmarkmanager.models.BookMark;
+import fr.tp.houssam.bookmarkmanager.models.FavoriteBookmark;
 import fr.tp.houssam.bookmarkmanager.models.Tag;
 
 /**
@@ -30,7 +31,7 @@ import fr.tp.houssam.bookmarkmanager.models.Tag;
  * @author Housssam
  * @version 23 nov. 2014
  */
-public class DAOJpaImp implements BookMarksDAO{
+public class DAO_JPA_Imp implements BookMarksDAO{
 
 	/**The EntityManager API is used to access a database in a particular 
 	 * unit of work. It is used to create and remove persistent entity instances, 
@@ -71,6 +72,27 @@ public class DAOJpaImp implements BookMarksDAO{
 	
 	public List<Tag> getTags_of_favoriteBookMarks(Integer ID) {
 		return null;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	
+	public void addBookMark(BookMark bookMark) {
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	
+	public void addFavoriteBookmark(FavoriteBookmark favoriteBookmark) {
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	
+	public void addTag_To_FavoriteBookmark(Tag tag) {
 	}
 
 }
