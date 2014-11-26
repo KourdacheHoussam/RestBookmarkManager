@@ -18,9 +18,9 @@ package fr.tp.houssam.bookmarkmanager.contracts;
 
 import java.util.List;
 
-import fr.tp.houssam.bookmarkmanager.models.BookMark;
-import fr.tp.houssam.bookmarkmanager.models.FavoriteBookmark;
-import fr.tp.houssam.bookmarkmanager.models.Tag;
+import fr.tp.houssam.bookmarkmanager.dao.BookMark;
+import fr.tp.houssam.bookmarkmanager.dao.FavoriteBookmark;
+import fr.tp.houssam.bookmarkmanager.dao.Tag;
 
 /**
  *
