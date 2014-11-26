@@ -38,7 +38,7 @@ import fr.tp.houssam.bookmarkmanager.models.BookMark;
  * @version 23 nov. 2014
  */
 @Path("/writing")
-public class WriteBookMarksOperations {
+public class WriteBookMarksOperationsImp {
 	
 	@Context
 	private UriInfo context;
@@ -46,7 +46,7 @@ public class WriteBookMarksOperations {
 	private BookMarksDAO bookMarksDAO;
 	
 	
-	public WriteBookMarksOperations(){}
+	public WriteBookMarksOperationsImp(){}
 	
 	/**
 	 * MediaType.Application_JSON pour spécifier que cette 

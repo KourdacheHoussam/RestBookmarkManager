@@ -14,17 +14,14 @@
 /**
  * 
  */
-package fr.tp.houssam.bookmarkmanager.rest;
-
-import javax.ws.rs.Path;
+package fr.tp.houssam.bookmarkmanager.contracts;
 
 /**
  *
  * @author Housssam
  * @version 26 nov. 2014
  */
-@Path("/updating")
-public class UpdateBookMarkOperations {
+public interface WriteBookMarksOperationsInt {
 
 }
 

@@ -114,7 +114,7 @@ public class DAO_JPA_Imp implements BookMarksDAO{
 	 * {@inheritDoc}
 	 */
 	
-	public int updateBookMarkByID(Integer id) {
+	public int updateBookMarkByID(Integer id, BookMark bookMark) {
 		return 0;
 	}
 

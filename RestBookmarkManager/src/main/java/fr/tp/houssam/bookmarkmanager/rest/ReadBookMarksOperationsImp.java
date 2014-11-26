@@ -31,7 +31,7 @@ import fr.tp.houssam.bookmarkmanager.models.BookMark;
  * @version 26 nov. 2014
  */
 @Path("/reading")
-public class ReadBookMarksOperations {
+public class ReadBookMarksOperationsImp {
 	
 	BookMarksDAO bookMarksDAO;	
 	/**
@@ -40,9 +40,7 @@ public class ReadBookMarksOperations {
 	@Path("{id}")
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 	public Response findBookMarkByID(@PathParam("id") Integer id){
-		
-		BookMark bm=bookMarksDAO.getBookmarkByID(id);
-		
+		BookMark bm=bookMarksDAO.getBookmarkByID(id);		
 		if(bm !=null){
 			return Response.status(200).entity(bm).build();
 		}

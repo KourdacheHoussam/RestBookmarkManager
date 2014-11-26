@@ -56,7 +56,7 @@ public interface BookMarksDAO {
 	
 	/**update bookmark*/
 	public int updateBookMark(BookMark bookMark);
-	public int updateBookMarkByID(Integer id);
+	public int updateBookMarkByID(Integer id, BookMark bookMark);
 	
 }
 
