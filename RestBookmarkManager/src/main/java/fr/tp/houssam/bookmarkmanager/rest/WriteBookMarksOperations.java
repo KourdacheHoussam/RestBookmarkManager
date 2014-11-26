@@ -18,6 +18,7 @@ package fr.tp.houssam.bookmarkmanager.rest;
 
 import javax.transaction.Transactional;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -27,8 +28,6 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
-import com.sun.jersey.api.spring.Autowire;
 
 import fr.tp.houssam.bookmarkmanager.contracts.BookMarksDAO;
 import fr.tp.houssam.bookmarkmanager.models.BookMark;
@@ -49,7 +48,15 @@ public class WriteBookMarksOperations {
 	
 	public WriteBookMarksOperations(){}
 	
-	@POST
+	/**
+	 * MediaType.Application_JSON pour spécifier que cette 
+	 * méthode reçoit des données en format jSON pour 
+	 * créer un nouveau bookmark.
+	 * @param bookMark
+	 * @return
+	 */
+	
+	@POST //means class ll send data with POST Request
 	@Consumes({MediaType.APPLICATION_JSON})
 	@Produces({MediaType.TEXT_HTML})
 	@Transactional
@@ -58,6 +65,17 @@ public class WriteBookMarksOperations {
 		return Response.status(201).entity("A new BookMark is added").build();
 	}
 	
+	
+	
+	@POST
+	@Consumes({MediaType.APPLICATION_JSON})
+	@Produces({MediaType.APPLICATION_FORM_URLENCODED})
+	@Transactional
+	public Response addBookFromForm(@FormParam("name") String  name, @FormParam("type") String type){
+		BookMark bm=new BookMark(name, type);
+		Integer id=bookMarksDAO.addBookMark(bm);
+		return Response.status(201).build();
+	}
 	
 	
 }

@@ -61,6 +61,11 @@ public class BookMark implements Serializable {
 	
 	public BookMark(){}
 
+	//constructeur
+	public BookMark(String name, String type){
+		this.name=name;
+		this.type=type;
+	}
 
 	/**
 	 *
