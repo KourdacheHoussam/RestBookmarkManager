@@ -32,8 +32,6 @@ import javax.persistence.Column;
  * @author Housssam
  * @version 23 nov. 2014
  */
-
-
 /**
  * @Entity : i-e une entite jpa : jpa for hibernate config
  * @Entity permet a BookMark de se faire mapper
@@ -44,7 +42,7 @@ import javax.persistence.Column;
 @Table(name="bookmarks")
 public class BookMark implements Serializable {
 	// serial version of object
-	private static final long serialVersionUID = 12L;
+	private static final long serialVersionUID = 1;
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="bookmark_id")

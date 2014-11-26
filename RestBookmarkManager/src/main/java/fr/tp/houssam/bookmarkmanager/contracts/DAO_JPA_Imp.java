@@ -98,6 +98,7 @@ public class DAO_JPA_Imp implements BookMarksDAO{
 	 */
 	
 	public void addTag_To_FavoriteBookmark(Tag tag) {
+	
 	}
 
 	/**
