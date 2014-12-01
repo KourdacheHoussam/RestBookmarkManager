@@ -18,6 +18,7 @@ package fr.tp.bookmarkmanager.restservices;
 
 import javax.transaction.Transactional;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -61,6 +62,12 @@ public class BookMarkRestService {
 		bookMarkDAO=(BookMarkDAO) FactoryDAO.getBookMarkDAO();
 	}
 	
+	
+	/**
+	 * Creation d'un bookmark
+	 * @param bookmark
+	 * @return
+	 */
 	@POST
 	@Consumes({ MediaType.APPLICATION_JSON })
 	@Produces({ MediaType.TEXT_HTML })
@@ -78,4 +85,23 @@ public class BookMarkRestService {
 		return Response.status(200).entity("Un nouveau BookMark vient d'être créé").build();
 	}
 
+	/**
+	 * Creation d'un bookmark depuis le formulaire
+	 * @param bookmark_name
+	 * @param bookmark_type
+	 * @return
+	 */
+	@POST
+	@Consumes({MediaType.APPLICATION_FORM_URLENCODED})
+	@Produces({MediaType.TEXT_HTML})
+	@Transactional
+	public Response createBookMarkFromFORM(	@FormParam("bm_name") String bookmark_name,
+			@FormParam("bm_type") String bookmark_type){
+		
+		BookMark bookmark=new BookMark(bookmark_name, bookmark_type);
+		bookMarkDAO.create(bookmark);
+		return Response.status(200).entity("un nouveau bookmark vient d'être créé avec un id="+bookmark.getId()).build();
+	}
+	
+	
 }
