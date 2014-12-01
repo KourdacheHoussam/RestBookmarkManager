@@ -21,5 +21,6 @@ Notes et ramarques: ***
 	à un seul endroit
 - Le pattern Factory dans DAO sert à créer les instances d'accès aux données
 - Le DAO Factory crée une instance De genericDAO.java pour retourner l'objet DAO souhaité.
+- Plus d'infos sur l'imp de DAO : http://openclassrooms.com/courses/apprenez-a-programmer-en-java/lier-ses-tables-avec-des-objets-java-le-pattern-dao
 
 
