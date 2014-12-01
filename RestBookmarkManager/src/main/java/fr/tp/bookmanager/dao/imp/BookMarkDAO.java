@@ -65,9 +65,10 @@ public class BookMarkDAO extends GenericDAO<BookMark> {
 	 */
 	
 	@Override
-	public boolean delete(BookMark obj) {
-		
-		return false;
+	public boolean delete(BookMark bookmark) {
+		Integer id=bookmark.getId();
+		entityManager.remove(bookmark);		
+		return entityManager.find(BookMark.class, id) != null ? true: false;
 	}
 
 	/**

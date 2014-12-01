@@ -118,10 +118,26 @@ public class BookMarkRestService {
 	@Produces({MediaType.TEXT_HTML})
 	@Transactional
 	public Response deleteBookMark(BookMark bookmark){
-		bookMarkDAO.delete(bookmark);
-		return Response.status(200).entity("Le bookmark dont l'id =" + bookmark.getId()+ " a été supprimé.").build();
+		if(bookMarkDAO.delete(bookmark))
+			return Response.status(200).entity("Le bookmark dont l'id =" + bookmark.getId()+ " a été supprimé.").build();
+		else
+			return Response.status(400).entity("Le bookmark dont l'id = "+ bookmark.getId()+ " n'a pas été supprimé").build();
 	}
 	
+	
+	@DELETE
+	@Path("/delete/{id}")
+	@Produces({MediaType.TEXT_HTML})
+	@Transactional
+	public Response deleteBookMarkByID(@PathParam("id") Integer id){
+		BookMark bm=new BookMark();
+		bm.setId(id);
+		
+		if(bookMarkDAO.delete(bm))
+			return Response.status(200).entity("Le bookmark dont l'id =" + bm.getId()+ " a été supprimé.").build();
+		else
+			return Response.status(400).entity("Le bookmark dont l'id = "+ bm.getId()+ " n'a pas été supprimé").build();		
+	}
 	
 	
 }
