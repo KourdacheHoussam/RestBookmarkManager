@@ -125,6 +125,11 @@ public class BookMarkRestService {
 	}
 	
 	
+	/**
+	 * Delete bookmark by id
+	 * @param id
+	 * @return
+	 */
 	@DELETE
 	@Path("/delete/{id}")
 	@Produces({MediaType.TEXT_HTML})
@@ -140,4 +145,16 @@ public class BookMarkRestService {
 	}
 	
 	
+	/**
+	 * Suppression de tous les bookmarks
+	 * @return
+	 */
+	@DELETE
+	@Path("/delete/all")
+	@Produces({MediaType.TEXT_HTML})
+	@Transactional
+	public Response deleteAllBookMarks(){
+		bookMarkDAO.deleteAll(null);
+		return Response.status(200).entity("tous les bookmarks ont été supprimé").build();
+	}
 }

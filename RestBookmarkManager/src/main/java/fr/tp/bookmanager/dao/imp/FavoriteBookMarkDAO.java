@@ -91,5 +91,14 @@ public class FavoriteBookMarkDAO extends GenericDAO<FavoriteBookMark>{
 		return fmb;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
+	
+	@Override
+	public boolean deleteAll(FavoriteBookMark obj) {
+		return false;
+	}
+
 }
 

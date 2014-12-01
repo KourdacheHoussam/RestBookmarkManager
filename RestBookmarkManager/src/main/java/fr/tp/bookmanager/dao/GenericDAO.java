@@ -39,6 +39,7 @@ public abstract class GenericDAO<T> {
 	// CRUD METHODS
 	public abstract Integer create(T obj);
 	public abstract boolean delete(T obj);
+	public abstract boolean deleteAll(T obj);
 	public abstract boolean update(T obj);
 	public abstract T find(int id);
 	

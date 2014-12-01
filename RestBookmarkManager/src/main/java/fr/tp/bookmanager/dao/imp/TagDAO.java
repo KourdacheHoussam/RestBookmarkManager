@@ -71,5 +71,14 @@ public class TagDAO extends GenericDAO<Tag>{
 		return null;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
+	
+	@Override
+	public boolean deleteAll(Tag obj) {
+		return false;
+	}
+
 }
 

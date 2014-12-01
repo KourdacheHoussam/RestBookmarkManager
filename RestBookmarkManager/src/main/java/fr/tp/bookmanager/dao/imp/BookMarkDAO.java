@@ -21,6 +21,8 @@ import java.sql.Connection;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import org.hibernate.Query;
+
 import fr.tp.bookmanager.dao.GenericDAO;
 import fr.tp.bookmarkmanager.entities.BookMark;
 
@@ -87,6 +89,17 @@ public class BookMarkDAO extends GenericDAO<BookMark> {
 	@Override
 	public BookMark find(int id) {
 		return null;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	
+	@Override
+	public boolean deleteAll(BookMark obj) {
+		Query query=(Query) entityManager.createNativeQuery("Truncate table bookmarks");
+		query.executeUpdate();
+		return true;
 	}
 
 }

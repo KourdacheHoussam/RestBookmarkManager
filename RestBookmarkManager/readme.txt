@@ -91,7 +91,9 @@ Parties REST :  ***
 	 	@Consumes({MediaType.APPLICATION_JSON})
 	 	@Produces({MediaType.TEXT_HTML})
 	 	@Transactional
-	 	public Response createBookMark(BookMark bookmark){}
+	 	public Response createBookMark(BookMark bookmark){
+	 		BookMarkDAO.<operation_X>
+	 	}
 	  			
 	 			
 	 			
