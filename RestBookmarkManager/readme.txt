@@ -26,6 +26,8 @@ Notes et ramarques: ***
 *******************
 Parties REST :  ***
 *******************
+
+
 ------------------------------------
 - fichier applicationContext.xml ---
 ------------------------------------
@@ -42,6 +44,28 @@ Parties REST :  ***
 		
 	....ETC
 	
-- 			
+- le gestionnaire de transaction utilisé est : JpaTransactionManager.
+- on utilise une entityManagerFactory
+- FactoryBean crée les JPA EntityManagerFactory
+- EntityManagerFactory peuvent être passés à JPA-Based DAO via les injection de dépendance:
+- la proprieté "persistentXmlLocation" spécifie la localisation du fichier configurant la couche de 
+  persistence JPA(persistence.xml)
+- jpaVendorAdapter (HibernateJpaVendorAdapter) spécifie le type de connecteur de base de données utilisé.
+
+
+	 			
+	 			
+-----------------------------------
+- La couche de persistence JPA ----
+-----------------------------------
+
+
+	- le contrat entre la couche des services et la couche des de persistence se
+	  fait via l'interface DAO; en l'occurence : FactoryDAO.java :)
+	  
+	-   
+
+
+	 			
 		
 		

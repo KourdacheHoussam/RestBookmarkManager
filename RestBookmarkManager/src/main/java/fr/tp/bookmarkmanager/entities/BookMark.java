@@ -14,7 +14,7 @@
 /**
  * 
  */
-package fr.tp.bookmarkmanager.models;
+package fr.tp.bookmarkmanager.entities;
 
 import java.io.Serializable;
 

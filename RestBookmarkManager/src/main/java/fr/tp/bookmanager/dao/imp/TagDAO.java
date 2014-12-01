@@ -19,7 +19,7 @@ package fr.tp.bookmanager.dao.imp;
 import java.sql.Connection;
 
 import fr.tp.bookmanager.dao.GenericDAO;
-import fr.tp.bookmarkmanager.models.Tag;
+import fr.tp.bookmarkmanager.entities.Tag;
 
 /**
  *

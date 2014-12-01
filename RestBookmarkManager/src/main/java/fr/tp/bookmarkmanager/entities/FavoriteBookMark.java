@@ -14,9 +14,10 @@
 /**
  * 
  */
-package fr.tp.bookmarkmanager.models;
+package fr.tp.bookmarkmanager.entities;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -26,23 +27,50 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
+
 /**
  *
  * @author Housssam
  * @version 23 nov. 2014
  */
-
-@XmlRootElement
 @Entity
-@Table(name="tags")
-public class Tag implements Serializable{
-
-	private static final long serialVersionUID = -2L;
+@XmlRootElement
+@Table(name="favoritebookmarks")
+public class FavoriteBookMark implements Serializable {
+	
+	// serial object version
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="tag_id")
+	@Column(name="fbm_id")
 	private Integer id;
-	@Column(name="tag_value")
-	private String tag_value;
-}	
+	@Column(name="fbm_name")
+	private String name;
+	@Column(name="fbm_description")
+	private String description;
+	@Column(name="fbm_tags")
+	private List<Tag> tags;
+	/**
+	 * 
+	 */
+	public FavoriteBookMark() {
+		super();
+	}
+	/**
+	 * @param id
+	 * @param name
+	 * @param description
+	 * @param tags
+	 */
+	public FavoriteBookMark(Integer id, String name, String description, List<Tag> tags) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.description = description;
+		this.tags = tags;
+	}
+	
+	
+	
+}
 

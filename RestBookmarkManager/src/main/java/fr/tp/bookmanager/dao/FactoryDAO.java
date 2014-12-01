@@ -19,9 +19,9 @@ package fr.tp.bookmanager.dao;
 import fr.tp.bookmanager.dao.imp.BookMarkDAO;
 import fr.tp.bookmanager.dao.imp.FavoriteBookMarkDAO;
 import fr.tp.bookmanager.dao.imp.TagDAO;
-import fr.tp.bookmarkmanager.models.BookMark;
-import fr.tp.bookmarkmanager.models.FavoriteBookMark;
-import fr.tp.bookmarkmanager.models.Tag;
+import fr.tp.bookmarkmanager.entities.BookMark;
+import fr.tp.bookmarkmanager.entities.FavoriteBookMark;
+import fr.tp.bookmarkmanager.entities.Tag;
 
 /**
  *

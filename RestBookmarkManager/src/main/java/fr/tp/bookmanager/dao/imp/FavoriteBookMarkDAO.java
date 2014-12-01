@@ -22,8 +22,8 @@ import java.sql.SQLException;
 import java.util.List;
 
 import fr.tp.bookmanager.dao.GenericDAO;
-import fr.tp.bookmarkmanager.models.FavoriteBookMark;
-import fr.tp.bookmarkmanager.models.Tag;
+import fr.tp.bookmarkmanager.entities.FavoriteBookMark;
+import fr.tp.bookmarkmanager.entities.Tag;
 
 /**
  *
