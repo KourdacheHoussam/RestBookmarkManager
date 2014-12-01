@@ -70,9 +70,18 @@ Parties REST :  ***
 		et d'interroger sur toutes les entités . Cette interface est similaire à la session 
 		dans Hibernate.
 		
-	 -  
+	 - Le context de peristence :
+	 	Un contexte de persistance est un ensemble d'instances dans lequel, pour ne importe 
+	 	quelle identité d'une entité persistante il ya une instance d'entité unique. Dans le 
+	 	contexte de persistance , les instances d'entités et de leur cycle de vie est géré par 
+	 	un gestionnaire d'entités particulier. La portée de ce contexte peut être la transsaction
+	 - pour insérer une entité dans une BD; on peut soit utiliser la méthode persist() ou merge().
+	 
 
 
+-------------------------------------
+- Les Services REST avec JERSEY  ----
+-------------------------------------
 	 			
 		
 		
