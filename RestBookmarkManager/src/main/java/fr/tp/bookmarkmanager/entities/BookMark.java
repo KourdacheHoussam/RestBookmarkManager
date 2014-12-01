@@ -45,11 +45,11 @@ public class BookMark implements Serializable {
 	private static final long serialVersionUID = 1;
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="bookmark_id")
+	@Column(name="bm_id")
 	private Integer id;
-	@Column(name="bookmark_name")
+	@Column(name="bm_name")
 	private String name;
-	@Column(name="bookmark_type")
+	@Column(name="bm_type")
 	private String type;
 	
 	

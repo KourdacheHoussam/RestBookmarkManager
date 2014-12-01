@@ -39,4 +39,15 @@
 		<property name="jndiName" value="java:comp/env/jdbc/restDemoDB" />
 		<property name="resourceRef" value="true" />
 	</bean>
+	
+	
+	<!--  La déclaration du Bean BookMarkDAO pour pouvoir l'ajouete
+	comme propriété au sein du service rest BookMarkRestService.java -->
+	
+	
+	<bean id="bookmarkDao" class="fr.tp.bookmanager.dao.BookMarkDAO"/>
+	<!-- utilisation du bean déclaré ci-dessus dans la classe BookMarkRestService -->
+	<bean id="bookMarkRestService" class="fr.tp.bookmanager.restservices.BookMarkRestService"/>
+		
 </beans>
+    

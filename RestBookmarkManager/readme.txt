@@ -82,6 +82,18 @@ Parties REST :  ***
 -------------------------------------
 - Les Services REST avec JERSEY  ----
 -------------------------------------
+	- Au sein des objets REST, i-e les objets exposants les données comme web services;
+	  on aura seulement besoin d'un FactoryDAO, sur lequel on appelera la méthode voulues, 
+	  par ex: create(), delete() ...Etc;
+	  
+	 - l'opération créant un bookmark: 
+	 	@POST
+	 	@Consumes({MediaType.APPLICATION_JSON})
+	 	@Produces({MediaType.TEXT_HTML})
+	 	@Transactional
+	 	public Response createBookMark(BookMark bookmark){}
+	  			
+	 			
 	 			
 		
 		
