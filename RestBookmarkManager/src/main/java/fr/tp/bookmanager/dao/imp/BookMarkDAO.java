@@ -66,6 +66,7 @@ public class BookMarkDAO extends GenericDAO<BookMark> {
 	
 	@Override
 	public boolean delete(BookMark obj) {
+		
 		return false;
 	}
 
