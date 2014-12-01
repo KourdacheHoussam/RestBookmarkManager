@@ -63,7 +63,14 @@ Parties REST :  ***
 	- le contrat entre la couche des services et la couche des de persistence se
 	  fait via l'interface DAO; en l'occurence : FactoryDAO.java :)
 	  
-	-   
+	- Dans le fichier BookMarkDAO.java, on utilise un objet EntityManger, chargé de : API EntityManager 
+		est utilisé pour accéder à une base de données dans une unité de travail particulière . 
+		Il est utilisé pour créer et supprimer des instances d'entités persistantes , 
+		de trouver entités par leur identité de clé primaire
+		et d'interroger sur toutes les entités . Cette interface est similaire à la session 
+		dans Hibernate.
+		
+	 -  
 
 
 	 			

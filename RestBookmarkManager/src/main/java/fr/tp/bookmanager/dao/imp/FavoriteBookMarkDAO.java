@@ -44,8 +44,8 @@ public class FavoriteBookMarkDAO extends GenericDAO<FavoriteBookMark>{
 	 */
 	
 	@Override
-	public boolean create(FavoriteBookMark obj) {
-		return false;
+	public Integer create(FavoriteBookMark obj) {
+		return 1;
 	}
 
 	/**

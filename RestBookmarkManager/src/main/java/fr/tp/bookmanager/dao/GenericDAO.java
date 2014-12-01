@@ -18,6 +18,9 @@ package fr.tp.bookmanager.dao;
 
 import java.sql.Connection;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
 /**
  *
  * @author Housssam
@@ -27,12 +30,14 @@ public abstract class GenericDAO<T> {
 
 	protected Connection connection;
 	
+	
+	
 	public GenericDAO(Connection connection){
 		this.connection=connection;
 	}
 	
 	// CRUD METHODS
-	public abstract boolean create(T obj);
+	public abstract Integer create(T obj);
 	public abstract boolean delete(T obj);
 	public abstract boolean update(T obj);
 	public abstract T find(int id);

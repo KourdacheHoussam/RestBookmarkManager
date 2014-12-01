@@ -18,6 +18,9 @@ package fr.tp.bookmanager.dao.imp;
 
 import java.sql.Connection;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
 import fr.tp.bookmanager.dao.GenericDAO;
 import fr.tp.bookmarkmanager.entities.BookMark;
 
@@ -27,7 +30,11 @@ import fr.tp.bookmarkmanager.entities.BookMark;
  * @version 30 nov. 2014
  */
 public class BookMarkDAO extends GenericDAO<BookMark> {
-
+	
+	@PersistenceContext
+	private EntityManager entityManager;
+	
+	
 	/**
 	 * @param connection
 	 */
@@ -36,12 +43,21 @@ public class BookMarkDAO extends GenericDAO<BookMark> {
 	}
 
 	/**
+	 * dans cette fonction, on créera un nouveau
+	 * bookMark que l'on stockera dans la BD
 	 * {@inheritDoc}
 	 */
 	
 	@Override
-	public boolean create(BookMark obj) {
-		return false;
+	public Integer create(BookMark bookmark) {
+		// on utilisant l'entity manager définie ci-dessous
+		// on pourra intéroger la BD pour y insérer le BookMark
+		entityManager.persist(bookmark);
+		// la methode flush de entity manager permet 
+		// de forcer l'insertion pour recvoir un id;
+		entityManager.flush();
+		//on retourne l'id
+		return bookmark.getId();	 
 	}
 
 	/**

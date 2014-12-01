@@ -40,8 +40,8 @@ public class TagDAO extends GenericDAO<Tag>{
 	 */
 	
 	@Override
-	public boolean create(Tag obj) {
-		return false;
+	public Integer create(Tag obj) {
+		return 1;
 	}
 
 	/**
