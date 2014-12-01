@@ -23,4 +23,25 @@ Notes et ramarques: ***
 - Le DAO Factory crée une instance De genericDAO.java pour retourner l'objet DAO souhaité.
 - Plus d'infos sur l'imp de DAO : http://openclassrooms.com/courses/apprenez-a-programmer-en-java/lier-ses-tables-avec-des-objets-java-le-pattern-dao
 
-
+*******************
+Parties REST :  ***
+*******************
+------------------------------------
+- fichier applicationContext.xml ---
+------------------------------------
+	= config de l'app = déclare le package à scanner(<component-scan>)
+	= y délcarer la config jpa(JAPTRANSACTIONMANAGER)
+	= y déclarer les beans utilisé dans l'app
+	
+	EX: 
+		<bean id="bookMarkDAO" class="fr.tp....BookMarkDAO">  --> déclare un bean que l'on pourra injecter 
+			à un attribut/property dans une classe quelconque; comme par ex:
+		<bean id="bookMarkRestService" class="fr.tp....BookMarkRestService">
+			<property name="bookMarkDAO" ref="bookMarkDAO"/>
+		</bean>
+		
+	....ETC
+	
+- 			
+		
+		
