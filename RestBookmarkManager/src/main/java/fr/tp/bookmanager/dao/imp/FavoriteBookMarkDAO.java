@@ -22,7 +22,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import fr.tp.bookmanager.dao.GenericDAO;
-import fr.tp.bookmarkmanager.models.FavoriteBookmark;
+import fr.tp.bookmarkmanager.models.FavoriteBookMark;
 import fr.tp.bookmarkmanager.models.Tag;
 
 /**
@@ -30,7 +30,7 @@ import fr.tp.bookmarkmanager.models.Tag;
  * @author Housssam
  * @version 30 nov. 2014
  */
-public class FavoriteBookMarkDAO extends GenericDAO<FavoriteBookmark>{
+public class FavoriteBookMarkDAO extends GenericDAO<FavoriteBookMark>{
 
 	/**
 	 * @param connection
@@ -44,7 +44,7 @@ public class FavoriteBookMarkDAO extends GenericDAO<FavoriteBookmark>{
 	 */
 	
 	@Override
-	public boolean create(FavoriteBookmark obj) {
+	public boolean create(FavoriteBookMark obj) {
 		return false;
 	}
 
@@ -53,7 +53,7 @@ public class FavoriteBookMarkDAO extends GenericDAO<FavoriteBookmark>{
 	 */
 	
 	@Override
-	public boolean delete(FavoriteBookmark obj) {
+	public boolean delete(FavoriteBookMark obj) {
 		return false;
 	}
 
@@ -62,7 +62,7 @@ public class FavoriteBookMarkDAO extends GenericDAO<FavoriteBookmark>{
 	 */
 	
 	@Override
-	public boolean update(FavoriteBookmark obj) {
+	public boolean update(FavoriteBookMark obj) {
 		return false;
 	}
 
@@ -72,8 +72,8 @@ public class FavoriteBookMarkDAO extends GenericDAO<FavoriteBookmark>{
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	public FavoriteBookmark find(int id) {
-		FavoriteBookmark fmb=new FavoriteBookmark();
+	public FavoriteBookMark find(int id) {
+		FavoriteBookMark fmb=new FavoriteBookMark();
 		try{
 			ResultSet result=this.connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, 
 						ResultSet.CONCUR_READ_ONLY).executeQuery("Select * from favoritebookmarks" +
@@ -82,7 +82,7 @@ public class FavoriteBookMarkDAO extends GenericDAO<FavoriteBookmark>{
 				List<Tag> tags=(List<Tag>) this.connection.createStatement().executeQuery("select fbm_tags where" +
 						"fbm_id="+id);
 				
-				fmb=new FavoriteBookmark(id, result.getString("fbm_name"), 
+				fmb=new FavoriteBookMark(id, result.getString("fbm_name"), 
 						result.getString("fbm_description"),tags);
 			}
 		}catch(SQLException e ){
