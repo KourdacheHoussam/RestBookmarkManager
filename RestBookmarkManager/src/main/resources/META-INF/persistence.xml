@@ -3,8 +3,13 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd"
 	version="1.0">
-
-	<persistence-unit name="tp" transaction-type="RESOURCE_LOCAL">
+	
+	<!-- persistence-unit permet de spécifier un nom utilisable par l'interface
+	EntityManagerFactory. Ce dernier est un objet factory qui permet de créer un 
+	objet entityManager qui lui sauvegardera tout ce qui est aux transactions, i-e sessions, config ...etc
+	de la couche JPA. -->
+	
+	<persistence-unit name="bookmarkmanager" transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<exclude-unlisted-classes>false</exclude-unlisted-classes>
 		<properties>

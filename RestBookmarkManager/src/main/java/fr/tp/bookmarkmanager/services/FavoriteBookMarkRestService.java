@@ -14,7 +14,7 @@
 /**
  * 
  */
-package fr.tp.bookmarkmanager.restservices;
+package fr.tp.bookmarkmanager.services;
 
 /**
  *
