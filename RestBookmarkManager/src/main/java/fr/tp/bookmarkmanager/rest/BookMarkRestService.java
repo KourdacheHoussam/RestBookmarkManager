@@ -14,7 +14,7 @@
 /**
  * 
  */
-package fr.tp.bookmarkmanager.services;
+package fr.tp.bookmarkmanager.rest;
 
 import javax.transaction.Transactional;
 import javax.ws.rs.Consumes;

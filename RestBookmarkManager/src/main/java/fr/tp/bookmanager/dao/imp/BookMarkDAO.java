@@ -56,7 +56,7 @@ public class BookMarkDAO extends GenericDAO<BookMark> {
 		// on pourra intéroger la BD pour y insérer le BookMark
 		entityManager.persist(bookmark);
 		// la methode flush de entity manager permet 
-		// de forcer l'insertion pour recvoir un id;
+		// de forcer l'insertion pour recevoir un id;
 		entityManager.flush();
 		//on retourne l'id
 		return bookmark.getId();	 

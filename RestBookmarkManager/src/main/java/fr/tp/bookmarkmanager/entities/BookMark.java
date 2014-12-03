@@ -22,11 +22,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+import javax.persistence.Version;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import org.hibernate.annotations.Entity;
 import org.hibernate.annotations.Generated;
 import javax.persistence.Column;
+
 /**
  *
  * @author Housssam
@@ -37,88 +41,96 @@ import javax.persistence.Column;
  * @Entity permet a BookMark de se faire mapper
  **/
 
-@Entity 
+@Entity
 @XmlRootElement
-@Table(name="bookmarks")
+@Table(name = "bookmarks",
+		uniqueConstraints = @UniqueConstraint(columnNames = { "name", "type" }))
+
+
 public class BookMark implements Serializable {
 	// serial version of object
 	private static final long serialVersionUID = 1;
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="bm_id")
-	private Integer id;
-	@Column(name="bm_name")
-	private String name;
-	@Column(name="bm_type")
-	private String type;
-	
-	
-	/** Il est impératif que Les entités JPA
-	 * se comporte comme les java beans
-	 * i-e avoir un constructuer vide sans paramètre
-	 * et des accesseurs/getters ainsi qu'un id pour identifier
-	 * l'élement au sein de la table */
-	
-	public BookMark(){}
 
-	//constructeur
-	public BookMark(String name, String type){
-		this.name=name;
-		this.type=type;
+	@Version
+	private Integer version;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "bm_id")
+	private Integer id;
+
+	@Column(name = "bm_name", nullable = false)
+	@Size(max = 40)
+	private String name;
+
+	@Column(name = "bm_type", nullable = false)
+	@Size(max = 60)
+	private String type;
+
+	/**
+	 * Il est impératif que Les entités JPA se comporte comme les java beans i-e
+	 * avoir un constructuer vide sans paramètre et des accesseurs/getters ainsi
+	 * qu'un id pour identifier l'élement au sein de la table
+	 */
+
+	public BookMark() {
+	}
+
+	// constructeur
+	public BookMark(String name, String type) {
+		this.name = name;
+		this.type = type;
 	}
 
 	/**
-	 *
+	 * 
 	 * @return the id
 	 */
 	public Integer getId() {
 		return id;
 	}
 
-
 	/**
-	 *
-	 * @param id the id to set
+	 * 
+	 * @param id
+	 *            the id to set
 	 */
 	public void setId(Integer id) {
 		this.id = id;
 	}
 
-
 	/**
-	 *
+	 * 
 	 * @return the name
 	 */
 	public String getName() {
 		return name;
 	}
 
-
 	/**
-	 *
-	 * @param name the name to set
+	 * 
+	 * @param name
+	 *            the name to set
 	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
-
 	/**
-	 *
+	 * 
 	 * @return the type
 	 */
 	public String getType() {
 		return type;
 	}
 
-
 	/**
-	 *
-	 * @param type the type to set
+	 * 
+	 * @param type
+	 *            the type to set
 	 */
 	public void setType(String type) {
 		this.type = type;
 	}
-	
-}
 
+}

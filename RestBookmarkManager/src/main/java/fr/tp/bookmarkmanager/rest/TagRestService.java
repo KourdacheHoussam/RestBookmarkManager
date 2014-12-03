@@ -14,14 +14,14 @@
 /**
  * 
  */
-package fr.tp.bookmarkmanager.services;
+package fr.tp.bookmarkmanager.rest;
 
 /**
  *
  * @author Housssam
  * @version 1 déc. 2014
  */
-public class FavoriteBookMarkRestService {
+public class TagRestService {
 
 }
 
