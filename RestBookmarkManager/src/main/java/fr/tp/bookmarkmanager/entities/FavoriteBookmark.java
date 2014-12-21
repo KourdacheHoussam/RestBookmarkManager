@@ -36,7 +36,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @XmlRootElement
 @Table(name="favoritebookmarks")
-public class FavoriteBookMark implements Serializable {
+public class FavoriteBookmark implements Serializable {
 	
 	// serial object version
 	private static final long serialVersionUID = 1L;
@@ -53,7 +53,7 @@ public class FavoriteBookMark implements Serializable {
 	/**
 	 * 
 	 */
-	public FavoriteBookMark() {
+	public FavoriteBookmark() {
 		super();
 	}
 	/**
@@ -62,7 +62,7 @@ public class FavoriteBookMark implements Serializable {
 	 * @param description
 	 * @param tags
 	 */
-	public FavoriteBookMark(Integer id, String name, String description, List<Tag> tags) {
+	public FavoriteBookmark(Integer id, String name, String description, List<Tag> tags) {
 		super();
 		this.id = id;
 		this.name = name;

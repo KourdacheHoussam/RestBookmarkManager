@@ -47,7 +47,7 @@ import javax.persistence.Column;
 		uniqueConstraints = @UniqueConstraint(columnNames = { "name", "type" }))
 
 
-public class BookMark implements Serializable {
+public class Bookmark implements Serializable {
 	// serial version of object
 	private static final long serialVersionUID = 1;
 
@@ -73,11 +73,11 @@ public class BookMark implements Serializable {
 	 * qu'un id pour identifier l'élement au sein de la table
 	 */
 
-	public BookMark() {
+	public Bookmark() {
 	}
 
 	// constructeur
-	public BookMark(String name, String type) {
+	public Bookmark(String name, String type) {
 		this.name = name;
 		this.type = type;
 	}

@@ -8,22 +8,20 @@
  * à des tiers sans son autorisation préalable.
  * </p>
  * <p>
- * Créé le 3 déc. 2014.
+ * Créé le 1 déc. 2014.
  * </p>
  */
 /**
  * 
  */
-package fr.tp.bookmanager.services;
+package fr.tp.bookmarkmanager.rest;
 
 /**
  *
  * @author Housssam
- * @version 3 déc. 2014
+ * @version 1 déc. 2014
  */
+public class FavoriteBookmarkRestService {
 
-public interface BookMarkServiceInt {
-
-	
 }
 

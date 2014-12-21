@@ -16,13 +16,13 @@
  */
 package fr.tp.bookmanager.services.rest;
 
-import fr.tp.bookmanager.services.BookMarkServiceInt;
+import fr.tp.bookmanager.services.BookmarkServiceInt;
 
 /**
  * @author Housssam
  * @version 3 déc. 2014
  */
-public class BookMarkServiceImp implements BookMarkServiceInt{
+public class BookmarkServiceImp implements BookmarkServiceInt{
 
 }
 

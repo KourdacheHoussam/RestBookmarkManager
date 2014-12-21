@@ -22,7 +22,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import fr.tp.bookmanager.dao.GenericDAO;
-import fr.tp.bookmarkmanager.entities.FavoriteBookMark;
+import fr.tp.bookmarkmanager.entities.FavoriteBookmark;
 import fr.tp.bookmarkmanager.entities.Tag;
 
 /**
@@ -30,12 +30,12 @@ import fr.tp.bookmarkmanager.entities.Tag;
  * @author Housssam
  * @version 30 nov. 2014
  */
-public class FavoriteBookMarkDAO extends GenericDAO<FavoriteBookMark>{
+public class FavoriteBookmarkDAO extends GenericDAO<FavoriteBookmark>{
 
 	/**
 	 * @param connection
 	 */
-	public FavoriteBookMarkDAO(Connection connection) {
+	public FavoriteBookmarkDAO(Connection connection) {
 		super(connection);
 	}
 
@@ -44,7 +44,7 @@ public class FavoriteBookMarkDAO extends GenericDAO<FavoriteBookMark>{
 	 */
 	
 	@Override
-	public Integer create(FavoriteBookMark obj) {
+	public Integer create(FavoriteBookmark obj) {
 		return 1;
 	}
 
@@ -53,7 +53,7 @@ public class FavoriteBookMarkDAO extends GenericDAO<FavoriteBookMark>{
 	 */
 	
 	@Override
-	public boolean delete(FavoriteBookMark obj) {
+	public boolean delete(FavoriteBookmark obj) {
 		return false;
 	}
 
@@ -62,7 +62,7 @@ public class FavoriteBookMarkDAO extends GenericDAO<FavoriteBookMark>{
 	 */
 	
 	@Override
-	public boolean update(FavoriteBookMark obj) {
+	public boolean update(FavoriteBookmark obj) {
 		return false;
 	}
 
@@ -72,8 +72,8 @@ public class FavoriteBookMarkDAO extends GenericDAO<FavoriteBookMark>{
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	public FavoriteBookMark find(int id) {
-		FavoriteBookMark fmb=new FavoriteBookMark();
+	public FavoriteBookmark find(int id) {
+		FavoriteBookmark fmb=new FavoriteBookmark();
 		try{
 			ResultSet result=this.connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, 
 						ResultSet.CONCUR_READ_ONLY).executeQuery("Select * from favoritebookmarks" +
@@ -82,7 +82,7 @@ public class FavoriteBookMarkDAO extends GenericDAO<FavoriteBookMark>{
 				List<Tag> tags=(List<Tag>) this.connection.createStatement().executeQuery("select fbm_tags where" +
 						"fbm_id="+id);
 				
-				fmb=new FavoriteBookMark(id, result.getString("fbm_name"), 
+				fmb=new FavoriteBookmark(id, result.getString("fbm_name"), 
 						result.getString("fbm_description"),tags);
 			}
 		}catch(SQLException e ){
@@ -96,7 +96,7 @@ public class FavoriteBookMarkDAO extends GenericDAO<FavoriteBookMark>{
 	 */
 	
 	@Override
-	public boolean deleteAll(FavoriteBookMark obj) {
+	public boolean deleteAll(FavoriteBookmark obj) {
 		return false;
 	}
 

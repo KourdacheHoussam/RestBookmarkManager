@@ -16,11 +16,11 @@
  */
 package fr.tp.bookmanager.dao;
 
-import fr.tp.bookmanager.dao.imp.BookMarkDAO;
-import fr.tp.bookmanager.dao.imp.FavoriteBookMarkDAO;
+import fr.tp.bookmanager.dao.imp.BookmarkDAO;
+import fr.tp.bookmanager.dao.imp.FavoriteBookmarkDAO;
 import fr.tp.bookmanager.dao.imp.TagDAO;
-import fr.tp.bookmarkmanager.entities.BookMark;
-import fr.tp.bookmarkmanager.entities.FavoriteBookMark;
+import fr.tp.bookmarkmanager.entities.Bookmark;
+import fr.tp.bookmarkmanager.entities.FavoriteBookmark;
 import fr.tp.bookmarkmanager.entities.Tag;
 
 /**
@@ -37,8 +37,8 @@ public class FactoryDAO {
 	 * la base de données
 	 * @return
 	 */
-	public static GenericDAO<BookMark> getBookMarkDAO(){
-		return new BookMarkDAO(null);
+	public static GenericDAO<Bookmark> getBookMarkDAO(){
+		return new BookmarkDAO(null);
 	}
 	/**
 	 * retourne un objet de la classe DAO de type TAG accédant à
@@ -54,8 +54,8 @@ public class FactoryDAO {
 	 * la base de données
 	 * @return
 	 */
-	public static GenericDAO<FavoriteBookMark> getFavoriteBookmarkDAO(){
-		return new FavoriteBookMarkDAO(null);
+	public static GenericDAO<FavoriteBookmark> getFavoriteBookmarkDAO(){
+		return new FavoriteBookmarkDAO(null);
 	}
 	
 }

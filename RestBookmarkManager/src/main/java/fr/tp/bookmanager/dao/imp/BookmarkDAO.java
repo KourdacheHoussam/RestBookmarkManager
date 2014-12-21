@@ -24,14 +24,14 @@ import javax.persistence.PersistenceContext;
 import org.hibernate.Query;
 
 import fr.tp.bookmanager.dao.GenericDAO;
-import fr.tp.bookmarkmanager.entities.BookMark;
+import fr.tp.bookmarkmanager.entities.Bookmark;
 
 /**
  *
  * @author Housssam
  * @version 30 nov. 2014
  */
-public class BookMarkDAO extends GenericDAO<BookMark> {
+public class BookmarkDAO extends GenericDAO<Bookmark> {
 	
 	@PersistenceContext
 	private EntityManager entityManager;
@@ -40,7 +40,7 @@ public class BookMarkDAO extends GenericDAO<BookMark> {
 	/**
 	 * @param connection
 	 */
-	public BookMarkDAO(Connection connection) {
+	public BookmarkDAO(Connection connection) {
 		super(connection);
 	}
 
@@ -51,7 +51,7 @@ public class BookMarkDAO extends GenericDAO<BookMark> {
 	 */
 	
 	@Override
-	public Integer create(BookMark bookmark) {
+	public Integer create(Bookmark bookmark) {
 		// on utilisant l'entity manager définie ci-dessous
 		// on pourra intéroger la BD pour y insérer le BookMark
 		entityManager.persist(bookmark);
@@ -67,10 +67,10 @@ public class BookMarkDAO extends GenericDAO<BookMark> {
 	 */
 	
 	@Override
-	public boolean delete(BookMark bookmark) {
+	public boolean delete(Bookmark bookmark) {
 		Integer id=bookmark.getId();
 		entityManager.remove(bookmark);		
-		return entityManager.find(BookMark.class, id) != null ? true: false;
+		return entityManager.find(Bookmark.class, id) != null ? true: false;
 	}
 
 	/**
@@ -78,7 +78,7 @@ public class BookMarkDAO extends GenericDAO<BookMark> {
 	 */
 	
 	@Override
-	public boolean update(BookMark obj) {
+	public boolean update(Bookmark obj) {
 		return false;
 	}
 
@@ -87,7 +87,7 @@ public class BookMarkDAO extends GenericDAO<BookMark> {
 	 */
 	
 	@Override
-	public BookMark find(int id) {
+	public Bookmark find(int id) {
 		return null;
 	}
 
@@ -96,7 +96,7 @@ public class BookMarkDAO extends GenericDAO<BookMark> {
 	 */
 	
 	@Override
-	public boolean deleteAll(BookMark obj) {
+	public boolean deleteAll(Bookmark obj) {
 		Query query=(Query) entityManager.createNativeQuery("Truncate table bookmarks");
 		query.executeUpdate();
 		return true;

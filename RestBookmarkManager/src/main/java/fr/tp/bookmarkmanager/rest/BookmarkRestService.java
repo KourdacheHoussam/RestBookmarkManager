@@ -31,8 +31,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import fr.tp.bookmanager.dao.FactoryDAO;
-import fr.tp.bookmanager.dao.imp.BookMarkDAO;
-import fr.tp.bookmarkmanager.entities.BookMark;
+import fr.tp.bookmanager.dao.imp.BookmarkDAO;
+import fr.tp.bookmarkmanager.entities.Bookmark;
 
 /**
  * @author Housssam
@@ -47,21 +47,21 @@ import fr.tp.bookmarkmanager.entities.BookMark;
 
 @Component
 @Path("/bookmarks")
-public class BookMarkRestService {
+public class BookmarkRestService {
 
 	
 	// Le bean bookMarkDAO doit être 
 	// déclaré au sein du fichier de config : applicationContext.xml :)
 	
 	@Autowired
-	private BookMarkDAO bookMarkDAO;
+	private BookmarkDAO bookMarkDAO;
 
 	
 	/**
 	 * constructeur 
 	 */
-	public BookMarkRestService() {
-		bookMarkDAO=(BookMarkDAO) FactoryDAO.getBookMarkDAO();
+	public BookmarkRestService() {
+		bookMarkDAO=(BookmarkDAO) FactoryDAO.getBookMarkDAO();
 	}
 	
 	
@@ -75,7 +75,7 @@ public class BookMarkRestService {
 	@Consumes({ MediaType.APPLICATION_JSON })
 	@Produces({ MediaType.TEXT_HTML })
 	@Transactional
-	public Response createBookMark(BookMark bookmark) {
+	public Response createBookMark(Bookmark bookmark) {
 		// il nous reste qu'à appler la méthode create()
 		// de l'objet FactoryDAO
 		bookMarkDAO.create(bookmark);
@@ -101,7 +101,7 @@ public class BookMarkRestService {
 	public Response createBookMarkFromFORM(	@FormParam("bm_name") String bookmark_name,
 			@FormParam("bm_type") String bookmark_type){
 		
-		BookMark bookmark=new BookMark(bookmark_name, bookmark_type);
+		Bookmark bookmark=new Bookmark(bookmark_name, bookmark_type);
 		bookMarkDAO.create(bookmark);
 		return Response.status(200).entity("un nouveau bookmark vient d'être créé avec un id = "+bookmark.getId()).build();
 	}
@@ -117,7 +117,7 @@ public class BookMarkRestService {
 	@Path("/delete/")
 	@Produces({MediaType.TEXT_HTML})
 	@Transactional
-	public Response deleteBookMark(BookMark bookmark){
+	public Response deleteBookMark(Bookmark bookmark){
 		if(bookMarkDAO.delete(bookmark))
 			return Response.status(200).entity("Le bookmark dont l'id =" + bookmark.getId()+ " a été supprimé.").build();
 		else
@@ -135,7 +135,7 @@ public class BookMarkRestService {
 	@Produces({MediaType.TEXT_HTML})
 	@Transactional
 	public Response deleteBookMarkByID(@PathParam("id") Integer id){
-		BookMark bm=new BookMark();
+		Bookmark bm=new Bookmark();
 		bm.setId(id);
 		
 		if(bookMarkDAO.delete(bm))
