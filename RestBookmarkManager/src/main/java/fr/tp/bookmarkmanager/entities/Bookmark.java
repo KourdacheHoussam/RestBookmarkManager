@@ -45,8 +45,6 @@ import javax.persistence.Column;
 @XmlRootElement
 @Table(name = "bookmarks",
 		uniqueConstraints = @UniqueConstraint(columnNames = { "name", "type" }))
-
-
 public class Bookmark implements Serializable {
 	// serial version of object
 	private static final long serialVersionUID = 1;
@@ -59,7 +57,7 @@ public class Bookmark implements Serializable {
 	@Column(name = "bm_id")
 	private Integer id;
 
-	@Column(name = "bm_name", nullable = false)
+	@Column(name = "bm_name", nullable = false, length=34, unique=true)
 	@Size(max = 40)
 	private String name;
 

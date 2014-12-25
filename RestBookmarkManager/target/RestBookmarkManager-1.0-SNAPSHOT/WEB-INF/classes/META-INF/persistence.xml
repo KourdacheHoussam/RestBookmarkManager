@@ -8,8 +8,7 @@
 	EntityManagerFactory. Ce dernier est un objet factory qui permet de créer un 
 	objet entityManager qui lui sauvegardera tout ce qui est aux transactions, i-e sessions, config ...etc
 	de la couche JPA. -->
-	
-	<persistence-unit name="bookmarkmanager" transaction-type="RESOURCE_LOCAL">
+	<persistence-unit name="bookmarkmanager" transaction-type="JTA">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<exclude-unlisted-classes>false</exclude-unlisted-classes>
 		<properties>
@@ -24,5 +23,6 @@
 			<property name="hibernate.transaction.manager_lookup_class" value="org.hibernate.transaction.SunONETransactionManagerLookup"/>
 			<property name="hibernate.archive.autodetection" value="class, hbm" />
 		</properties>
+		
 	</persistence-unit>
 </persistence>
