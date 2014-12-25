@@ -30,8 +30,8 @@ import javax.ws.rs.core.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import fr.tp.bookmanager.dao.FactoryDAO;
-import fr.tp.bookmanager.dao.imp.BookmarkDAO;
+import fr.tp.bookmarkmanager.dao.FactoryDAO;
+import fr.tp.bookmarkmanager.dao.imp.BookmarkDAO;
 import fr.tp.bookmarkmanager.entities.Bookmark;
 
 /**
