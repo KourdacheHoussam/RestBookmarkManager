@@ -47,7 +47,7 @@ import fr.tp.bookmarkmanager.entities.Bookmark;
 
 @Component
 @Path("/bookmarks")
-public class BookmarkRestService {
+public class BookmarkRest {
 
 	
 	// Le bean bookMarkDAO doit être 
@@ -60,7 +60,7 @@ public class BookmarkRestService {
 	/**
 	 * constructeur 
 	 */
-	public BookmarkRestService() {
+	public BookmarkRest() {
 		//bookMarkDAO=(BookmarkDAO) FactoryDAO.getBookMarkDAO();
 	}
 	
