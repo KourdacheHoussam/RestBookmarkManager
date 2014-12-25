@@ -3,8 +3,6 @@
 	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	version="2.5">
-
-
     
 	<!-- ce fichier est utilisé par le serveur pour pour détecter une applicaiton 
 		on pourra également y définir les servlets les pages d'accueils ....etc -->
@@ -31,9 +29,8 @@
 	
 	<servlet-mapping>
 		<servlet-name>Jersey REST Service</servlet-name>
-		<url-pattern>/rest/*</url-pattern>
+		<url-pattern>/*</url-pattern>
 	</servlet-mapping>
-
 	
 </web-app>	
     
