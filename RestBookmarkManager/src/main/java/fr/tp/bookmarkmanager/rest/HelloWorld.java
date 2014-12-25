@@ -36,7 +36,7 @@ import fr.tp.bookmarkmanager.services.HelloWorldServiceInt;
 /**
  * Root resource (exposed at "services" path)
  */
-@Path("/")
+@Path("/hello")
 public class HelloWorld {
     @Context
     private UriInfo context;

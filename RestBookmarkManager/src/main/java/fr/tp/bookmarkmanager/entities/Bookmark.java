@@ -16,17 +16,19 @@
  */
 package fr.tp.bookmarkmanager.entities;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.persistence.Version;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
+
 import org.hibernate.annotations.Entity;
-import fr.tp.bookmarkmanager.commons.PersistentObjectInt;
+
 import fr.tp.bookmarkmanager.commons.imp.PersistentObjectImp;
-
-import javax.persistence.Column;
-
 /**
  * @author Housssam
  * @version 23 nov. 2014
@@ -37,7 +39,6 @@ import javax.persistence.Column;
  **/
 
 @Entity
-@XmlRootElement
 @Table(name = "bookmarks",
 		uniqueConstraints = @UniqueConstraint(columnNames = { "name", "type" }))
 public class Bookmark extends PersistentObjectImp {
@@ -58,6 +59,9 @@ public class Bookmark extends PersistentObjectImp {
 
 	@Column(name="bm_description", nullable=true, length=66)
 	private String description;
+	
+	@ManyToMany(cascade={CascadeType.ALL})
+	private Set<Tag> tags;
 	
 	/**
 	 * Il est impératif que Les entités JPA se comporte comme les java beans i-e
