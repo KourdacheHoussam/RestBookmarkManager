@@ -16,7 +16,7 @@
  */
 package fr.tp.bookmarkmanager.rest;
 
-import javax.transaction.Transactional;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.FormParam;
@@ -74,7 +74,7 @@ public class BookmarkRestService {
 	@Path("/create")
 	@Consumes({ MediaType.APPLICATION_JSON })
 	@Produces({ MediaType.TEXT_HTML })
-	@Transactional
+	//@Transactional
 	public Response createBookMark(Bookmark bookmark) {
 		// il nous reste qu'à appler la méthode create()
 		// de l'objet FactoryDAO
@@ -97,7 +97,7 @@ public class BookmarkRestService {
 	@POST
 	@Consumes({MediaType.APPLICATION_FORM_URLENCODED})
 	@Produces({MediaType.TEXT_HTML})
-	@Transactional
+	//@Transactional
 	public Response createBookMarkFromFORM(	@FormParam("bm_name") String bookmark_name,
 			@FormParam("bm_type") String bookmark_type){
 		
@@ -116,7 +116,7 @@ public class BookmarkRestService {
 	@DELETE
 	@Path("/delete/")
 	@Produces({MediaType.TEXT_HTML})
-	@Transactional
+//	@Transactional
 	public Response deleteBookMark(Bookmark bookmark){
 		//if(bookMarkDAO.delete(bookmark))
 			//return Response.status(200).entity("Le bookmark dont l'id =" + bookmark.getId()+ " a été supprimé.").build();
@@ -134,7 +134,7 @@ public class BookmarkRestService {
 	@DELETE
 	@Path("/delete/{id}")
 	@Produces({MediaType.TEXT_HTML})
-	@Transactional
+//	@Transactional
 	public Response deleteBookMarkByID(@PathParam("id") Integer id){
 		Bookmark bm=new Bookmark();
 		bm.setId(id);
@@ -155,7 +155,7 @@ public class BookmarkRestService {
 	@DELETE
 	@Path("/delete/all")
 	@Produces({MediaType.TEXT_HTML})
-	@Transactional
+//	@Transactional
 	public Response deleteAllBookMarks(){
 		//bookMarkDAO.deleteAll(null);
 		return Response.status(200).entity("tous les bookmarks ont été supprimé").build();
