@@ -27,6 +27,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import fr.tp.bookmarkmanager.commons.PersistentObjectInt;
+
 
 /**
  *
@@ -36,18 +38,17 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @XmlRootElement
 @Table(name="favoritebookmarks")
-public class FavoriteBookmark implements Serializable {
+public class FavoriteBookmark implements PersistentObjectInt {
 	
 	// serial object version
 	private static final long serialVersionUID = 1L;
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="fbm_id")
-	private Integer id;
-	@Column(name="fbm_name")
+
+	@Column(name="fbm_name", length=33, nullable=false)
 	private String name;
-	@Column(name="fbm_description")
+	@Column(name="fbm_description", length=66, nullable=true)
 	private String description;
+	
+	
 	@Column(name="fbm_tags")
 	private List<Tag> tags;
 	/**
@@ -63,14 +64,10 @@ public class FavoriteBookmark implements Serializable {
 	 * @param tags
 	 */
 	public FavoriteBookmark(Integer id, String name, String description, List<Tag> tags) {
-		super();
-		this.id = id;
+		super();		
 		this.name = name;
 		this.description = description;
 		this.tags = tags;
-	}
-	
-	
-	
+	}	
 }
 

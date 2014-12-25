@@ -29,20 +29,21 @@ import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
 public class PersistentObjectImp {
-
 	@Id
 	@GeneratedValue
 	@Column(name="id", unique=true, nullable=false)
 	private Integer id;
 
+	public PersistentObjectImp(){
+		super();
+	}
 	/**
 	 *
 	 * @return the id
 	 */
 	public Integer getId() {
 		return id;
-	}
-	
+	}	
 	/**
 	 *
 	 * @param id the id to set
@@ -51,4 +52,3 @@ public class PersistentObjectImp {
 		this.id = id;
 	}	
 }
-

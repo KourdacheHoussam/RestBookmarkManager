@@ -23,7 +23,7 @@ import java.io.Serializable;
  * @author Housssam
  * @version 25 déc. 2014
  */
-public class PersistentObjectInt implements Serializable {
+public interface PersistentObjectInt extends Serializable {
 
 }
 

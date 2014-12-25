@@ -16,23 +16,18 @@
  */
 package fr.tp.bookmarkmanager.entities;
 
-import java.io.Serializable;
-
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.persistence.Version;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-
 import org.hibernate.annotations.Entity;
-import org.hibernate.annotations.Generated;
+import fr.tp.bookmarkmanager.commons.PersistentObjectInt;
+import fr.tp.bookmarkmanager.commons.imp.PersistentObjectImp;
+
 import javax.persistence.Column;
 
 /**
- *
  * @author Housssam
  * @version 23 nov. 2014
  */
@@ -45,17 +40,13 @@ import javax.persistence.Column;
 @XmlRootElement
 @Table(name = "bookmarks",
 		uniqueConstraints = @UniqueConstraint(columnNames = { "name", "type" }))
-public class Bookmark implements Serializable {
+public class Bookmark extends PersistentObjectImp {
+	
 	// serial version of object
 	private static final long serialVersionUID = 1;
 
 	@Version
 	private Integer version;
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "bm_id")
-	private Integer id;
 
 	@Column(name = "bm_name", nullable = false, length=34, unique=true)
 	@Size(max = 40)
@@ -65,6 +56,9 @@ public class Bookmark implements Serializable {
 	@Size(max = 60)
 	private String type;
 
+	@Column(name="bm_description", nullable=true, length=66)
+	private String description;
+	
 	/**
 	 * Il est impératif que Les entités JPA se comporte comme les java beans i-e
 	 * avoir un constructuer vide sans paramètre et des accesseurs/getters ainsi
@@ -72,29 +66,14 @@ public class Bookmark implements Serializable {
 	 */
 
 	public Bookmark() {
+		super();
 	}
 
 	// constructeur
 	public Bookmark(String name, String type) {
+		super();
 		this.name = name;
 		this.type = type;
-	}
-
-	/**
-	 * 
-	 * @return the id
-	 */
-	public Integer getId() {
-		return id;
-	}
-
-	/**
-	 * 
-	 * @param id
-	 *            the id to set
-	 */
-	public void setId(Integer id) {
-		this.id = id;
 	}
 
 	/**
@@ -130,5 +109,7 @@ public class Bookmark implements Serializable {
 	public void setType(String type) {
 		this.type = type;
 	}
+
+
 
 }

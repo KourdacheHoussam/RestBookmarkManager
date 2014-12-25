@@ -18,7 +18,6 @@ package fr.tp.bookmarkmanager.dao;
 
 import fr.tp.bookmarkmanager.dao.imp.BookmarkDAO;
 import fr.tp.bookmarkmanager.dao.imp.FavoriteBookmarkDAO;
-import fr.tp.bookmarkmanager.dao.imp.TagDAO;
 import fr.tp.bookmarkmanager.entities.Bookmark;
 import fr.tp.bookmarkmanager.entities.FavoriteBookmark;
 import fr.tp.bookmarkmanager.entities.Tag;
@@ -47,7 +46,7 @@ public class FactoryDAO {
 	 */
 	
 	public static GenericDAO<Tag> getTagDAO(){
-		return new TagDAO(null);
+		return null; //new GenericDAO<Tag>(null);
 	}
 	/**
 	 * retourne un objet de la classe DAO de type FavoriteBookMark accédant à
