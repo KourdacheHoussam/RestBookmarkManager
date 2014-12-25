@@ -28,9 +28,7 @@ import javax.persistence.PersistenceContext;
  */
 public abstract class GenericDAO<T> {
 
-	protected Connection connection;
-	
-	
+	protected Connection connection;	
 	
 	public GenericDAO(Connection connection){
 		this.connection=connection;

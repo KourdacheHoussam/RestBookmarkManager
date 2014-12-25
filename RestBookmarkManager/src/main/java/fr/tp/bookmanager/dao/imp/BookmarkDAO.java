@@ -32,10 +32,10 @@ import fr.tp.bookmarkmanager.entities.Bookmark;
  * @version 30 nov. 2014
  */
 public class BookmarkDAO extends GenericDAO<Bookmark> {
-	
+	/**
 	@PersistenceContext
 	private EntityManager entityManager;
-	
+	*/
 	
 	/**
 	 * @param connection
@@ -54,10 +54,10 @@ public class BookmarkDAO extends GenericDAO<Bookmark> {
 	public Integer create(Bookmark bookmark) {
 		// on utilisant l'entity manager définie ci-dessous
 		// on pourra intéroger la BD pour y insérer le BookMark
-		entityManager.persist(bookmark);
+		/**entityManager.persist(bookmark);
 		// la methode flush de entity manager permet 
 		// de forcer l'insertion pour recevoir un id;
-		entityManager.flush();
+		entityManager.flush();*/
 		//on retourne l'id
 		return bookmark.getId();	 
 	}
@@ -68,9 +68,10 @@ public class BookmarkDAO extends GenericDAO<Bookmark> {
 	
 	@Override
 	public boolean delete(Bookmark bookmark) {
-		Integer id=bookmark.getId();
+		return false;
+		/**Integer id=bookmark.getId();
 		entityManager.remove(bookmark);		
-		return entityManager.find(Bookmark.class, id) != null ? true: false;
+		return entityManager.find(Bookmark.class, id) != null ? true: false;*/
 	}
 
 	/**
@@ -97,8 +98,8 @@ public class BookmarkDAO extends GenericDAO<Bookmark> {
 	
 	@Override
 	public boolean deleteAll(Bookmark obj) {
-		Query query=(Query) entityManager.createNativeQuery("Truncate table bookmarks");
-		query.executeUpdate();
+		/**Query query=(Query) entityManager.createNativeQuery("Truncate table bookmarks");
+		query.executeUpdate();*/
 		return true;
 	}
 

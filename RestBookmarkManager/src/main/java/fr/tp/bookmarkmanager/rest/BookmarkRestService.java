@@ -53,15 +53,15 @@ public class BookmarkRestService {
 	// Le bean bookMarkDAO doit être 
 	// déclaré au sein du fichier de config : applicationContext.xml :)
 	
-	@Autowired
-	private BookmarkDAO bookMarkDAO;
+	//@Autowired
+	//private BookmarkDAO bookMarkDAO;
 
 	
 	/**
 	 * constructeur 
 	 */
 	public BookmarkRestService() {
-		bookMarkDAO=(BookmarkDAO) FactoryDAO.getBookMarkDAO();
+		//bookMarkDAO=(BookmarkDAO) FactoryDAO.getBookMarkDAO();
 	}
 	
 	
@@ -78,7 +78,7 @@ public class BookmarkRestService {
 	public Response createBookMark(Bookmark bookmark) {
 		// il nous reste qu'à appler la méthode create()
 		// de l'objet FactoryDAO
-		bookMarkDAO.create(bookmark);
+	//	bookMarkDAO.create(bookmark);
 		
 		//vaut mieux utiliser un objet Response pour retourner 
 		// le résultat car il permet de renvoyer une réponse bien structuré
@@ -102,7 +102,7 @@ public class BookmarkRestService {
 			@FormParam("bm_type") String bookmark_type){
 		
 		Bookmark bookmark=new Bookmark(bookmark_name, bookmark_type);
-		bookMarkDAO.create(bookmark);
+	//	bookMarkDAO.create(bookmark);
 		return Response.status(200).entity("un nouveau bookmark vient d'être créé avec un id = "+bookmark.getId()).build();
 	}
 	
@@ -118,10 +118,11 @@ public class BookmarkRestService {
 	@Produces({MediaType.TEXT_HTML})
 	@Transactional
 	public Response deleteBookMark(Bookmark bookmark){
-		if(bookMarkDAO.delete(bookmark))
-			return Response.status(200).entity("Le bookmark dont l'id =" + bookmark.getId()+ " a été supprimé.").build();
-		else
-			return Response.status(400).entity("Le bookmark dont l'id = "+ bookmark.getId()+ " n'a pas été supprimé").build();
+		//if(bookMarkDAO.delete(bookmark))
+			//return Response.status(200).entity("Le bookmark dont l'id =" + bookmark.getId()+ " a été supprimé.").build();
+		//else
+			//return Response.status(400).entity("Le bookmark dont l'id = "+ bookmark.getId()+ " n'a pas été supprimé").build();
+		return null;
 	}
 	
 	
@@ -138,10 +139,12 @@ public class BookmarkRestService {
 		Bookmark bm=new Bookmark();
 		bm.setId(id);
 		
-		if(bookMarkDAO.delete(bm))
+		/**if(bookMarkDAO.delete(bm))
 			return Response.status(200).entity("Le bookmark dont l'id =" + bm.getId()+ " a été supprimé.").build();
 		else
 			return Response.status(400).entity("Le bookmark dont l'id = "+ bm.getId()+ " n'a pas été supprimé").build();		
+		 */
+		return null;
 	}
 	
 	
@@ -154,7 +157,7 @@ public class BookmarkRestService {
 	@Produces({MediaType.TEXT_HTML})
 	@Transactional
 	public Response deleteAllBookMarks(){
-		bookMarkDAO.deleteAll(null);
+		//bookMarkDAO.deleteAll(null);
 		return Response.status(200).entity("tous les bookmarks ont été supprimé").build();
 	}
 }

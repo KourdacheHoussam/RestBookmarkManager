@@ -1,5 +1,5 @@
 
-Objectifs: 
+#Objectifs: 
 
 - intro aux différents concepts JEE : JPA, DAO, Hibernate, Maven, Jersey
 - implémenter les patterns DAO avec le pattern Factory
@@ -9,9 +9,7 @@ Objectifs:
 - Faire de la classe abstraite DAO une classe générique.
 - se familiariser avec la lib JERSEY pour exposer des services REST
 
-
-Notes et ramarques:
-
+##### Notes et ramarques:
 - pattern factory= fabrique d'objets; délègue l'instanciation d'obejts à une classe
 - avantage = instance concrètes(avec new) se font à une seul endroit => s'il y a des changements à faire, se feront
 	à un seul endroit
@@ -20,7 +18,7 @@ Notes et ramarques:
 - Plus d'infos sur l'imp de DAO : http://openclassrooms.com/courses/apprenez-a-programmer-en-java/lier-ses-tables-avec-des-objets-java-le-pattern-dao
 
 
-Parties REST :  
+##Parties REST :  
 
 
 - fichier applicationContext.xml 
@@ -49,7 +47,7 @@ Parties REST :
 
 	 			
 
-- La couche de persistence JPA 
+## La couche de persistence JPA 
 
 
 	- le contrat entre la couche des services et la couche des de persistence se
@@ -71,8 +69,8 @@ Parties REST :
 	 
 
 
--------------------------------------
-- Les Services REST avec JERSEY  ----
+
+ Les Services REST avec JERSEY  
 -------------------------------------
 	- Au sein des objets REST, i-e les objets exposants les données comme web services;
 	  on aura seulement besoin d'un FactoryDAO, sur lequel on appelera la méthode voulues, 
