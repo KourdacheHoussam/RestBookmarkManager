@@ -7,16 +7,13 @@
 	<packaging>war</packaging>
 	<name>Houssam</name>
 	<description>Projet JEE Web Gestion de bookmark </description>
-
-	<properties>
+	
+  <properties>
 		<org.springframework.version>3.0.3.RELEASE</org.springframework.version>
 		<spring-security.version>3.0.2.RELEASE</spring-security.version>
-		<jersey.version>1.16</jersey.version>
-		<hibernate.version>4.3.5.Final</hibernate.version>
+		<jersey.version>1.18</jersey.version>
 	</properties>
-
 	<dependencies>
-		<!-- Ajout du spring framework -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
@@ -76,9 +73,6 @@
 			<version>${spring-security.version}</version>
 			<scope>compile</scope>
 		</dependency>
-
-		<!-- ajout de la lib hibernate, config choisir pour la persistance des 
-			données -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
@@ -90,24 +84,14 @@
 			<version>4.2.0.Final</version>
 		</dependency>
 		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-commons-annotations</artifactId>
-			<version>3.2.0.Final</version>
-		</dependency>
-		<!-- <dependency> <groupId>org.hibernate.javax.persistence</groupId> <artifactId>hibernate-jpa-2.0-api</artifactId> 
-			<version>1.0.0.Final</version> </dependency> <dependency> <groupId>org.hibernate</groupId> 
-			<artifactId>hibernate-entitymanager</artifactId> <version>${hibernate.version}</version> 
-			</dependency> -->
-		<dependency>
 			<groupId>commons-logging</groupId>
 			<artifactId>commons-logging</artifactId>
 			<version>1.1</version>
 		</dependency>
 		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-log4j12</artifactId>
-			<version>1.6.4</version>
-			<scope>runtime</scope>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-commons-annotations</artifactId>
+			<version>3.2.0.Final</version>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
@@ -129,42 +113,12 @@
 			<artifactId>cglib</artifactId>
 			<version>2.2.2</version>
 		</dependency>
-
 		<dependency>
 			<groupId>com.thoughtworks.xstream</groupId>
 			<artifactId>xstream</artifactId>
 			<version>1.3.1</version>
 		</dependency>
-		<dependency>
-			<groupId>org.apache.derby</groupId>
-			<artifactId>derby</artifactId>
-			<version>10.4.1.3</version>
-		</dependency>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.10</version>
-			<scope>test</scope>
-		</dependency>
-
-		<!-- Ajout de JESREY JAX-WS -->
-	
-		<dependency>
-			<groupId>asm</groupId>
-			<artifactId>asm</artifactId>
-			<version>3.3.1</version>
-		</dependency>
-		<dependency>
-			<groupId>com.sun.jersey</groupId>
-			<artifactId>jersey-bundle</artifactId>
-			<version>1.18.1</version>
-		</dependency>
-		<dependency>
-			<groupId>com.sun.jersey</groupId>
-			<artifactId>jersey-core</artifactId>
-			<version>1.17.1</version>
-		</dependency>
-
+		<!-- Jersey -->
 		<dependency>
 			<groupId>com.sun.jersey</groupId>
 			<artifactId>jersey-server</artifactId>
@@ -178,13 +132,19 @@
 		<dependency>
 			<groupId>com.sun.jersey</groupId>
 			<artifactId>jersey-servlet</artifactId>
-			<version>1.15</version>
+			<version>1.18</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.jersey</groupId>
+			<artifactId>jersey-core</artifactId>
+			<version>1.18</version>
 		</dependency>
 		<!-- Jersey Spring -->
 		<dependency>
 			<groupId>com.sun.jersey.contribs</groupId>
 			<artifactId>jersey-spring</artifactId>
 			<version>${jersey.version}</version>
+
 			<!-- Exclusion explicite des dépendances SPRING (par défaut spring 2.5 
 				mais compatible 3.X -->
 			<exclusions>

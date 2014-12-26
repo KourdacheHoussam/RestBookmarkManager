@@ -16,14 +16,10 @@
  */
 package fr.tp.bookmanager.tests;
 
-import static org.junit.Assert.assertEquals;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 
-import org.junit.Test;
-
-import fr.tp.bookmarkmanager.entities.Bookmark;
 
 /**
  *
@@ -32,7 +28,7 @@ import fr.tp.bookmarkmanager.entities.Bookmark;
  */
 public class EntitiesTests {
 	
-	
+	/**
 	@Test
 	public void testNewBookmark(){
 		EntityManager entityManager=Persistence.createEntityManagerFactory("bookmarkManager").createEntityManager();
@@ -52,6 +48,6 @@ public class EntitiesTests {
 		System.out.println("book mark found : "+bm.getName());
 		assertEquals(bookmark.getName(), bm.getName());
 		entityManager.close();
-	}
+	}**/
 }
 
