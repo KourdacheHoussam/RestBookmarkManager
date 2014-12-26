@@ -85,7 +85,13 @@
 	 		BookMarkDAO.<operation_X>
 	 	}
 	  			
-	 			
+###Remarques et erreurs:
+	- dans le fichier web.xml: l'erreur "java.lang.ClassNotFoundException: 	org.glassfish.jersey.servlet.ServletContainer" vient du fait que la version de jersey que 
+	vous utilisez n'est pas celle qu'il faut déclarer dans dans web.xml:
+		faut remplacer : " org.glassfish.jersey.servlet.ServletContainer " de la version 2 PAR :
+		la version 1 : " com.sun.jersey.spi.container.servlet.ServletContainer" .
+	
+		
 	 			
 		
 		
