@@ -6,7 +6,7 @@
     
 	<!-- ce fichier est utilisé par le serveur pour pour détecter une applicaiton 
 		on pourra également y définir les servlets les pages d'accueils ....etc -->
-	
+	<!-- 
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
@@ -14,22 +14,22 @@
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>/WEB-INF/applicationContext.xml</param-value>
-	</context-param>
+	</context-param>  -->
 	
 	<!-- The servlet dispatcher -->
 	<servlet>
-		<servlet-name>Jersey REST Service</servlet-name>
-		<servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
+		<servlet-name>servlet-jersey</servlet-name>
+		<servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
 		<init-param>
-			<param-name>jersey.config.server.provider.packages</param-name>
-			<param-value>fr.tp.bookmarkmanager.rest</param-value>
+		     <param-name>com.sun.jersey.config.property.packages</param-name>
+		     <param-value>fr.tp.bookmarkmanager</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
-	
+ 
 	<servlet-mapping>
-		<servlet-name>Jersey REST Service</servlet-name>
-		<url-pattern>/*</url-pattern>
+		<servlet-name>servlet-jersey</servlet-name>
+		<url-pattern>/rest/*</url-pattern>
 	</servlet-mapping>
 	
 </web-app>	

@@ -73,11 +73,19 @@ public class Bookmark extends PersistentObjectImp {
 		super();
 	}
 
-	// constructeur
-	public Bookmark(String name, String type) {
+	public Bookmark(final String name, final String type, final String description){
 		super();
 		this.name = name;
 		this.type = type;
+		this.description=description;
+	}
+	// constructeur
+	public Bookmark(final String name, final String type, final String description, final Set<Tag> tags) {
+		super();
+		this.name = name;
+		this.type = type;
+		this.description=description;
+		this.tags=tags;
 	}
 
 	/**

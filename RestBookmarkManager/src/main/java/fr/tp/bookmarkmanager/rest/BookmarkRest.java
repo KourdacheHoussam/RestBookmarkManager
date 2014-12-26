@@ -99,9 +99,9 @@ public class BookmarkRest {
 	@Produces({MediaType.TEXT_HTML})
 	//@Transactional
 	public Response createBookMarkFromFORM(	@FormParam("bm_name") String bookmark_name,
-			@FormParam("bm_type") String bookmark_type){
+			@FormParam("bm_type") String bookmark_type, @FormParam("bm_description") String bookmark_desc){
 		
-		Bookmark bookmark=new Bookmark(bookmark_name, bookmark_type);
+		Bookmark bookmark=new Bookmark(bookmark_name, bookmark_type, bookmark_desc);
 	//	bookMarkDAO.create(bookmark);
 		return Response.status(200).entity("un nouveau bookmark vient d'être créé avec un id = "+bookmark.getId()).build();
 	}
