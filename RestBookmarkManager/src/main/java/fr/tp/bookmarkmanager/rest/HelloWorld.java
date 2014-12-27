@@ -22,6 +22,8 @@ package fr.tp.bookmarkmanager.rest;
  * @version 25 déc. 2014
  */
 
+import java.util.ArrayList;
+
 import javax.servlet.ServletContext;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -40,6 +42,7 @@ import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import com.sun.jersey.api.core.InjectParam;
 
+import fr.tp.bookmarkmanager.entities.Bookmark;
 import fr.tp.bookmarkmanager.services.HelloWorldServiceInt;
 import fr.tp.bookmarkmanager.services.imp.HelloWorldServiceImp;
 /**
@@ -50,12 +53,13 @@ public class HelloWorld {
     @Context
     private UriInfo context;
     
+    
     /**
      * Injected service
      */
     private HelloWorldServiceInt helloservice;    
  
-    public HelloWorld() {  }    
+    public HelloWorld() {}    
     
     @GET  
     @Path("/helloOne")
@@ -77,7 +81,19 @@ public class HelloWorld {
     public Response getHtml() {
     	return Response.status(200).entity("Works  "+this.helloservice.getHello()).build();
     }
-
+    
+    @GET
+    @Path("/helloThree")
+    @Produces({MediaType.APPLICATION_JSON})
+    public Response getHtml1() {
+    	ArrayList<Bookmark> ar=new ArrayList<Bookmark>();
+    	ar.add(new Bookmark("nomA", "TypeA", "films westerns" ));
+    	ar.add(new Bookmark("nomB", "TypeA", "films comedie" ));
+    	ar.add(new Bookmark("nomC", "TypeC", "films action" ));
+    	ar.add(new Bookmark("nomD", "TypeD", "films romance" ));
+    	
+    	return Response.ok(ar, MediaType.APPLICATION_JSON).build();
+    }
 	/**
 	 *
 	 * @param helloservice the helloservice to set
