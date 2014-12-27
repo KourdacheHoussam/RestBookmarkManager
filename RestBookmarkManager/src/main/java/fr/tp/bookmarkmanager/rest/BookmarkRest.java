@@ -20,6 +20,7 @@ package fr.tp.bookmarkmanager.rest;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.FormParam;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -65,6 +66,13 @@ public class BookmarkRest {
 	}
 	
 	
+	
+	@GET
+	@Path("/open")
+	@Produces({MediaType.TEXT_HTML})
+	public String open(){
+		return "opend";
+	}
 	/**
 	 * Creation d'un bookmark
 	 * @param bookmark
