@@ -15,20 +15,15 @@
  * 
  */
 package fr.tp.bookmarkmanager.services.imp;
-
-import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.stereotype.Service;
-
 import fr.tp.bookmarkmanager.services.HelloWorldServiceInt;
-
 /**
  *
  * @author Housssam
  * @version 25 déc. 2014
  */
 @Service
-@Configurable  
-public class HelloWorldServiceImpl implements HelloWorldServiceInt{	
+public class HelloWorldServiceImp implements HelloWorldServiceInt{	
 	public String getHello() {
 		return "Zzzzzzzzzzzz";
 	}
@@ -39,7 +34,5 @@ public class HelloWorldServiceImpl implements HelloWorldServiceInt{
 	public int fuck() {
 		return 0;
 	}
-
-	
 }
 

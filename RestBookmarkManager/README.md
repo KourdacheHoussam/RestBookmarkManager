@@ -91,7 +91,12 @@
 		faut remplacer : " org.glassfish.jersey.servlet.ServletContainer " de la version 2 PAR :
 		la version 1 : " com.sun.jersey.spi.container.servlet.ServletContainer" .
 	
-		
-	 			
-		
-		
+###Difficultés rencontrées:
+	- Problème d'injection : l'utilisaiton de l'annotation @InjectParam n'a pas réussi à injecter 
+	l'interface dans le bean Rest HelloWorld.java. L'objet helloService est vide car il n'a pas été instancié
+	lors de l'injection. La déclaration des beans dans le fichier applicationContext.xml n'a pas résolu le problème.
+	C'est pourquoi j'ai décidé de déployer mes composants sur GlassFish au lieu de Tomcat/Jboss.
+	
+	- Cela dit, sur glassFish l'injection de dépendance marche trés bien avec les deux méthodes: par ajout de 	@Autowired sur la proprité ou par déclaration des beans dans le applicationContext.xml + ajout du setter 	(setHelloservice) dans le 	bean HelloWorld.java.	
+	
+	

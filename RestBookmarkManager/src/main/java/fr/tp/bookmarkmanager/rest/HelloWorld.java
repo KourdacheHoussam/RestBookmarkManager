@@ -22,6 +22,7 @@ package fr.tp.bookmarkmanager.rest;
  * @version 25 déc. 2014
  */
 
+import javax.servlet.ServletContext;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -32,14 +33,15 @@ import javax.ws.rs.core.UriInfo;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import com.sun.jersey.api.core.InjectParam;
-import com.sun.jersey.api.spring.Autowire;
 
 import fr.tp.bookmarkmanager.services.HelloWorldServiceInt;
-import fr.tp.bookmarkmanager.services.imp.HelloWorldServiceImpl;
+import fr.tp.bookmarkmanager.services.imp.HelloWorldServiceImp;
 /**
  * Root resource (exposed at "services" path)
  */
@@ -53,16 +55,19 @@ public class HelloWorld {
      */
     private HelloWorldServiceInt helloservice;    
  
-    //Constructor
     public HelloWorld() {
-    	
+    	//instanciation obligatoire
+    	helloservice=new HelloWorldServiceImp();
     }    
     
     @GET  
-    @Path("/fuck")
+    @Path("/helloOne")
     @Produces(MediaType.TEXT_PLAIN)
     public String sayPlainTextHello() {
-      return "Hello Jersey";
+    	if(helloservice==null)
+    		return ("Hello Service is NULL");
+    	else
+    		return "Hello Jersey";
     }
     
     /**
@@ -70,21 +75,20 @@ public class HelloWorld {
      * @return dummy text
      */
     @GET
-    @Path("/service")
+    @Path("/helloTwo")
     @Produces({MediaType.TEXT_PLAIN})
     public Response getHtml() {
-    	//instanciation obligatoire
-    	helloservice=new HelloWorldServiceImpl();
-    	return Response.status(200).entity("Fuck you  "+this.helloservice.getHello()).build();
+    	return Response.status(200).entity("Works  "+this.helloservice.getHello()).build();
     }
 
-    /**
+	/**
 	 *
-	 * @param helloservice the helloservice to set	: Setter for bean injection
+	 * @param helloservice the helloservice to set
 	 */
-	public void setHelloservice(HelloWorldServiceInt helloservice) {
+	@Autowired
+    public void setHelloservice(HelloWorldServiceInt helloservice) {
 		this.helloservice = helloservice;
 	}
-    
+
     
 }

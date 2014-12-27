@@ -9,13 +9,14 @@
 
 	<!-- Le répertoire à scanner pour chercher les controleurs -->	
 	<context:annotation-config />
-	<context:component-scan base-package="fr.tp.bookmarkmanager.services" />
+	<context:component-scan base-package="fr.tp.bookmarkmanager" />
 	
-	 
-	<bean id="helloService" class="fr.tp.bookmarkmanager.services.imp.HelloWorldServiceImpl"/>	
-	<bean id="helle" class="fr.tp.bookmarkmanager.rest.HelloWorld">
-		<property name="helloservice" value="helloService"></property> 
+	
+	<!-- injection de l'interface helloService dans le bean helloWorld via la propriete helloservice  -->
+	<bean id="helloService" class="fr.tp.bookmarkmanager.services.imp.HelloWorldServiceImp"/>	
+	<bean name="helloWorld" class="fr.tp.bookmarkmanager.rest.HelloWorld">
+		<property name="helloservice" ref="helloService"/> 
 	</bean>
-	
+	 
 </beans>
     
