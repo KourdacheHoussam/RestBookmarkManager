@@ -21,8 +21,10 @@ package fr.tp.bookmarkmanager.services;
  * @author Housssam
  * @version 25 déc. 2014
  */
+
 public interface HelloWorldServiceInt {
 	
-	String getHello(String s);
+	public String getHello();
+	int fuck();
 }
 
