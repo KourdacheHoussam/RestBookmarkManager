@@ -55,10 +55,7 @@ public class HelloWorld {
      */
     private HelloWorldServiceInt helloservice;    
  
-    public HelloWorld() {
-    	//instanciation obligatoire
-    	helloservice=new HelloWorldServiceImp();
-    }    
+    public HelloWorld() {  }    
     
     @GET  
     @Path("/helloOne")
