@@ -13,10 +13,10 @@
 	
 	
 	<!-- injection de l'interface helloService dans le bean helloWorld via la propriete helloservice  -->
-	<bean id="helloService" class="fr.tp.bookmarkmanager.services.imp.HelloWorldServiceImp"/>	
-	<bean name="helloWorld" class="fr.tp.bookmarkmanager.rest.HelloWorld">
-		<property name="helloservice" ref="helloService"/> 
-	</bean>
+		<bean id="helloService" class="fr.tp.bookmarkmanager.services.imp.HelloWorldServiceImp"/>	
+		<bean name="helloWorld" class="fr.tp.bookmarkmanager.rest.HelloWorld">
+			<property name="helloservice" ref="helloService"/> 
+		</bean>
 	 
 </beans>
     

@@ -16,12 +16,14 @@
  */
 package fr.tp.bookmarkmanager.services;
 
+import fr.tp.bookmarkmanager.entities.Bookmark;
+
 /**
  *
  * @author Housssam
  * @version 25 déc. 2014
  */
 public interface BookmarkServiceInt {
-
+	Bookmark saveBookmark(final Bookmark instance);
 }
 

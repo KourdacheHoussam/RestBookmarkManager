@@ -12,8 +12,8 @@
 		<restlet.version>1.1.10</restlet.version>
 		<org.springframework.version>3.0.3.RELEASE</org.springframework.version>
 		<spring-security.version>3.0.2.RELEASE</spring-security.version>
-		<jersey.version>1.18</jersey.version>		
-	</properties>	
+		<jersey.version>1.18</jersey.version>
+	</properties>
 	<repositories>
 		<repository>
 			<id>maven-restlet</id>
@@ -158,6 +158,9 @@
 			<version>${spring-security.version}</version>
 			<scope>compile</scope>
 		</dependency>
+
+		<!-- ****** Hibernate***** -->
+
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
@@ -178,6 +181,22 @@
 			<artifactId>hibernate-commons-annotations</artifactId>
 			<version>3.2.0.Final</version>
 		</dependency>
+		<dependency>
+			<groupId>org.hibernate.javax.persistence</groupId>
+			<artifactId>hibernate-jpa-2.0-api</artifactId>
+			<version>1.0.1.Final</version>
+		</dependency>
+
+		<!-- ****** MYSQL Connector ***** -->
+
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.34</version>
+		</dependency>
+
+		<!-- ************** -->
+
 		<dependency>
 			<groupId>commons-logging</groupId>
 			<artifactId>commons-logging</artifactId>
@@ -214,7 +233,7 @@
 			<artifactId>derbyclient</artifactId>
 			<version>10.10.1.1</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>

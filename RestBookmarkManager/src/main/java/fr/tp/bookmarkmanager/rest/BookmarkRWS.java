@@ -34,6 +34,7 @@ import org.springframework.stereotype.Component;
 import fr.tp.bookmarkmanager.dao.FactoryDAO;
 import fr.tp.bookmarkmanager.dao.imp.BookmarkDAO;
 import fr.tp.bookmarkmanager.entities.Bookmark;
+import fr.tp.bookmarkmanager.services.BookmarkServiceInt;
 
 /**
  * @author Housssam
@@ -46,33 +47,29 @@ import fr.tp.bookmarkmanager.entities.Bookmark;
  * 
  */
 
-@Component
 @Path("/bookmarks")
-public class BookmarkRest {
+public class BookmarkRWS {
 
+	private BookmarkServiceInt bookmarkservice;
 	
-	// Le bean bookMarkDAO doit être 
-	// déclaré au sein du fichier de config : applicationContext.xml :)
-	
-	//@Autowired
-	//private BookmarkDAO bookMarkDAO;
+	public BookmarkRWS() {}
 
-	
-	/**
-	 * constructeur 
-	 */
-	public BookmarkRest() {
-		//bookMarkDAO=(BookmarkDAO) FactoryDAO.getBookMarkDAO();
-	}
-	
-	
-	
 	@GET
 	@Path("/open")
 	@Produces({MediaType.TEXT_HTML})
 	public String open(){
 		return "opend";
 	}
+	
+	@POST
+	@Path("/add")
+	@Produces({MediaType.APPLICATION_JSON})
+	public Response addBookmark(){
+		Bookmark bm=new Bookmark("Added_BM", "A", "Favorite A");
+		bookmarkservice.saveBookmark(bm);
+		return Response.status(200).entity(bm).build();
+	}
+	
 	/**
 	 * Creation d'un bookmark
 	 * @param bookmark
@@ -163,9 +160,16 @@ public class BookmarkRest {
 	@DELETE
 	@Path("/delete/all")
 	@Produces({MediaType.TEXT_HTML})
-//	@Transactional
 	public Response deleteAllBookMarks(){
 		//bookMarkDAO.deleteAll(null);
 		return Response.status(200).entity("tous les bookmarks ont été supprimé").build();
+	}
+	
+	/** ----------- Beans Setters ------------ */
+	/**
+	 * @param bookmarkservice the bookmarkservice to set
+	 */
+	public void setBookmarkservice(BookmarkServiceInt bookmarkservice) {
+		this.bookmarkservice = bookmarkservice;
 	}
 }
