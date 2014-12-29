@@ -12,19 +12,21 @@
 	<context:annotation-config />
 	<context:component-scan base-package="fr.tp.bookmarkmanager" />
 
-
+	<!-- JPA Configuration -->
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	
 	<!-- injection de l'interface helloService dans le bean helloWorld via la 
 		propriete helloservice -->
 	<bean id="helloService" class="fr.tp.bookmarkmanager.services.imp.HelloWorldServiceImp" />
-	<bean name="helloWorld" class="fr.tp.bookmarkmanager.rest.HelloWorld">
+	<bean name="helloWorld" class="fr.tp.bookmarkmanager.rest.HelloWorldRWS">
 		<property name="helloservice" ref="helloService" />
 	</bean>
 
 	<!-- injection de l'interface BookmarkService -->
-	<bean id="bookmarkService" class="fr.tp.bookmarkmanager.services.impl.BookmarkServiceImp"/>
+	<bean id="bookmarkService" class="fr.tp.bookmarkmanager.services.imp.BookmarkServiceImp" />
 	<bean name="bookmarkRWS" class="fr.tp.bookmarkmanager.rest.BookmarkRWS">
 		<property name="bookmarkservice" ref="bookmarkService"></property>
 	</bean>
-	
+
 </beans>
     

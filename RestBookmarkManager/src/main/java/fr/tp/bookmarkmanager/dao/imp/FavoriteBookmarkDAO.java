@@ -82,8 +82,8 @@ public class FavoriteBookmarkDAO extends GenericDAO<FavoriteBookmark>{
 				List<Tag> tags=(List<Tag>) this.connection.createStatement().executeQuery("select fbm_tags where" +
 						"fbm_id="+id);
 				
-				fmb=new FavoriteBookmark(id, result.getString("fbm_name"), 
-						result.getString("fbm_description"),tags);
+//				fmb=new FavoriteBookmark(id, result.getString("fbm_name"), 
+//						result.getString("fbm_description"),tags);
 			}
 		}catch(SQLException e ){
 			e.printStackTrace();	

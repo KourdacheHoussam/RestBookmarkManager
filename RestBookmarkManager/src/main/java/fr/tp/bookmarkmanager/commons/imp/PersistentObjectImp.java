@@ -19,15 +19,13 @@ package fr.tp.bookmarkmanager.commons.imp;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
-
 /**
  *
  * @author Housssam
  * @version 25 déc. 2014
  */
 
-@MappedSuperclass
+//@MappedSuperclass
 public class PersistentObjectImp {
 	@Id
 	@GeneratedValue

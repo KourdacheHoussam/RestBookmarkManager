@@ -1,0 +1,1 @@
+create table bookmarks(id Integer not null primary key, name varchar(40) not null, description varchar(30),type varchar not null );

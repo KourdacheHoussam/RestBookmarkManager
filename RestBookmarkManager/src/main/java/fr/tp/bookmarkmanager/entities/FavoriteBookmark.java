@@ -15,59 +15,96 @@
  * 
  */
 package fr.tp.bookmarkmanager.entities;
-
 import java.io.Serializable;
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
-
-import fr.tp.bookmarkmanager.commons.PersistentObjectInt;
-
-
 /**
  *
  * @author Housssam
  * @version 23 nov. 2014
  */
 @Entity
-@XmlRootElement
-@Table(name="favoritebookmarks")
-public class FavoriteBookmark implements PersistentObjectInt {
+@Table(name="FAVORITEBOOKMARKS")
+public class FavoriteBookmark implements Serializable{ 
 	
-	// serial object version
 	private static final long serialVersionUID = 1L;
-
+	@Id
+	@GeneratedValue
+	@Column(name="fbm_id", unique=true, nullable=false)
+	private Integer id;
 	@Column(name="fbm_name", length=33, nullable=false)
 	private String name;
 	@Column(name="fbm_description", length=66, nullable=true)
 	private String description;
-	
-	
-	@Column(name="fbm_tags")
-	private List<Tag> tags;
+		
+	//@ManyToMany(cascade={CascadeType.ALL})
+	//private List<Tag> tags;
 	/**
 	 * 
 	 */
-	public FavoriteBookmark() {
-		super();
-	}
+	public FavoriteBookmark() {	}
 	/**
 	 * @param id
 	 * @param name
 	 * @param description
 	 * @param tags
 	 */
-	public FavoriteBookmark(Integer id, String name, String description, List<Tag> tags) {
-		super();		
+//	public FavoriteBookmark(Integer id, String name, String description, List<Tag> tags) {
+//		super();		
+//		this.name = name;
+//		this.description = description;
+//		this.tags = tags;
+//	}	
+
+	/**
+	 *
+	 * @return the id
+	 */
+	public Integer getId() {
+		return id;
+	}
+
+	/**
+	 *
+	 * @param id the id to set
+	 */
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	/**
+	 *
+	 * @return the name
+	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 *
+	 * @param name the name to set
+	 */
+	public void setName(String name) {
 		this.name = name;
+	}
+
+	/**
+	 *
+	 * @return the description
+	 */
+	public String getDescription() {
+		return description;
+	}
+
+	/**
+	 *
+	 * @param description the description to set
+	 */
+	public void setDescription(String description) {
 		this.description = description;
-		this.tags = tags;
 	}	
 }
 

@@ -67,8 +67,40 @@
 	 	un gestionnaire d'entités particulier. La portée de ce contexte peut être la transsaction
 	 - pour insérer une entité dans une BD; on peut soit utiliser la méthode persist() ou merge().
 	 
+# Création de la base de données et génération des entities:
+	- Démarrer glassfish database avec la commande: asadmin start-database
+	- Ajout le perspective "database developpement" à la fenêtre d'eclipse 
+		-> OpenPerspective > Other > Database Developement
+	- Création d'une connection à la base de données: clique droit sur Database connections > New
+	- Créer une BD en choisissant le "profile" Derby, donner un nom à la base de données et choisir le mot
+		de mot de passe, nom utilisateur et le port.
+	- Une fois la connection et la DB créée, démarrer là en y cliquant droit > connect.
 
+####### Configuration le projet de sorte à ce qu'il se connecte sur la bonne database:
+	- Dans le fichier persistence.xml, ajoutez l'url suivante :
+			<property name="javax.persistence.jdbc.url" 					value="jdbc:derby://localhost:1527/derbyDataBase;create=true"/>
+	
+	- Et dans le fichier hibernate.cfg.xml, ajouter la ligne définissant la propriété connection 		d'hibernate:	 
+		  	<property name="hibernate.connection.url" > 				jdbc:derby://localhost:1527/derbyDataBase;create=true</property>
+	
 
+####### Changer les propriétés du projet, i-e les propriétés jpa et hiberante et Ajout de la facet JPA au projet afin que l'on puisse distinguer les entités et le mappage effectué.
+	- Clique droit sur le projet > propriétés > facets : sélectionner JPA et choisissez la bonne version.
+	 
+	 - Cela ajoute un nouvelle "facet" à votre projet : "JPA Content".
+	 - Dérouler ce projet vous listera les différentes entités scannées que le moteur jpa a trouvé 
+	 	dans le projet.
+
+####### Déclarer les entités dans le fichier persistence.xml: 
+	- Clique droit sur JPA Content > persistence, puis clique sur "Synchronise Class List": cela
+		rajoute automatiquement les différentes classes Entity dans le fichier persistence.xml.
+		
+		
+**Remarques :**  
+
+	- Sur des grands projets la déclaration de toutes les classes peut surcharger le fichier 	persistence.xml; pour remédier à cela on peut envisager l'utilisation d'un fichier orm.xml où 	l'on	déclarera toutes les entités. Ce fichier sera par la suite importé dans le fichier 	persistence.xml.
+	- L'ajout des annotations @Transaction et @PersistentContext aux opérations des services(@Service) 	suppose l'utilisation	des transaction de type "JTA" au lieu de "RESOURCE_LOCAL" ( à déclarer dans 	persistence.xml :  	transaction-type="JTA".
+	
 
  Les Services REST avec JERSEY  
 -------------------------------------

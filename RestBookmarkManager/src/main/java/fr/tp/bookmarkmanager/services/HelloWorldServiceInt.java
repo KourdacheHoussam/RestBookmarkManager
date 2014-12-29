@@ -22,9 +22,7 @@ package fr.tp.bookmarkmanager.services;
  * @version 25 déc. 2014
  */
 
-public interface HelloWorldServiceInt {
-	
+public interface HelloWorldServiceInt {	
 	public String getHello();
-	int fuck();
 }
 

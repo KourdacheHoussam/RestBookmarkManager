@@ -27,12 +27,5 @@ public class HelloWorldServiceImp implements HelloWorldServiceInt{
 	public String getHello() {
 		return "Zzzzzzzzzzzz";
 	}
-	/**
-	 * {@inheritDoc}
-	 */
-	
-	public int fuck() {
-		return 0;
-	}
 }
 

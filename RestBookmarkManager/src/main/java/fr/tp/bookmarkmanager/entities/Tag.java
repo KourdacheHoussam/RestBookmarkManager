@@ -15,26 +15,20 @@
  * 
  */
 package fr.tp.bookmarkmanager.entities;
-
 import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
-
 /**
- *
  * @author Housssam
  * @version 23 nov. 2014
  */
 
-@XmlRootElement
 @Entity
-@Table(name="tags")
+@Table(name="TAGS")
 public class Tag implements Serializable{
 
 	private static final long serialVersionUID = -2L;
@@ -42,7 +36,38 @@ public class Tag implements Serializable{
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="tag_id")
 	private Integer id;
+	
 	@Column(name="tag_value")
 	private String tag_value;
+	
+	public Tag(){}
+
+	/**
+	 * @return the id
+	 */
+	public Integer getId() {
+		return id;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	/**
+	 * @return the tag_value
+	 */
+	public String getTag_value() {
+		return tag_value;
+	}
+
+	/**
+	 * @param tag_value the tag_value to set
+	 */
+	public void setTag_value(String tag_value) {
+		this.tag_value = tag_value;
+	}
 }	
 

@@ -54,20 +54,16 @@ public class BookmarkRWS {
 	
 	public BookmarkRWS() {}
 
+	/**
+	 * add bookmark
+	 * @return
+	 */
 	@GET
-	@Path("/open")
-	@Produces({MediaType.TEXT_HTML})
-	public String open(){
-		return "opend";
-	}
-	
-	@POST
 	@Path("/add")
-	@Produces({MediaType.APPLICATION_JSON})
 	public Response addBookmark(){
 		Bookmark bm=new Bookmark("Added_BM", "A", "Favorite A");
 		bookmarkservice.saveBookmark(bm);
-		return Response.status(200).entity(bm).build();
+		return Response.ok(bm, MediaType.APPLICATION_JSON).build();
 	}
 	
 	/**
@@ -169,6 +165,7 @@ public class BookmarkRWS {
 	/**
 	 * @param bookmarkservice the bookmarkservice to set
 	 */
+	@Autowired
 	public void setBookmarkservice(BookmarkServiceInt bookmarkservice) {
 		this.bookmarkservice = bookmarkservice;
 	}

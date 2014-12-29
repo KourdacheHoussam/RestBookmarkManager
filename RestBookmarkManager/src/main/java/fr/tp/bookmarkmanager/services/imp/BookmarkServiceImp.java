@@ -15,33 +15,33 @@
  * 
  */
 package fr.tp.bookmarkmanager.services.imp;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-
+import org.springframework.stereotype.Service;
 import fr.tp.bookmarkmanager.entities.Bookmark;
 import fr.tp.bookmarkmanager.services.BookmarkServiceInt;
-
 /**
  *
  * @author Housssam
  * @version 25 déc. 2014
  */
+@Service
 public class BookmarkServiceImp implements BookmarkServiceInt{
-
-	public Bookmark saveBookmark(Bookmark instance) {
-		EntityManagerFactory emf=Persistence.createEntityManagerFactory("tp");
-		EntityManager em=emf.createEntityManager();
-		
+	EntityManager em;
+	EntityManagerFactory emf;
+	/**
+	 * Save new bookmark 
+	 */
+	public Bookmark saveBookmark(final Bookmark instanceBM) {
+		emf=Persistence.createEntityManagerFactory("bookmarkpersistence");
+		em=emf.createEntityManager();	
 		em.getTransaction().begin();
-		em.persist(instance);
-		em.flush();
+		em.persist(instanceBM);
+		em.flush(); // force transaction
 		em.getTransaction().commit();
 		em.close();
 		emf.close();
-		return instance;
+		return instanceBM;
 	}
-
 }
-

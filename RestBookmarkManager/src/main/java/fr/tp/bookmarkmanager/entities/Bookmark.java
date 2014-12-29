@@ -15,20 +15,15 @@
  * 
  */
 package fr.tp.bookmarkmanager.entities;
-
-import java.util.Set;
-
-import javax.persistence.CascadeType;
+import java.io.Serializable;
 import javax.persistence.Column;
-import javax.persistence.ManyToMany;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
-import javax.persistence.Version;
 import javax.validation.constraints.Size;
 
-import org.hibernate.annotations.Entity;
 
-import fr.tp.bookmarkmanager.commons.imp.PersistentObjectImp;
 /**
  * @author Housssam
  * @version 23 nov. 2014
@@ -39,29 +34,25 @@ import fr.tp.bookmarkmanager.commons.imp.PersistentObjectImp;
  **/
 
 @Entity
-@Table(name = "bookmarks",
-		uniqueConstraints = @UniqueConstraint(columnNames = { "name", "type" }))
-public class Bookmark extends PersistentObjectImp {
-	
-	// serial version of object
+@Table(name="BOOKMARKS")
+public class Bookmark implements Serializable{	
 	private static final long serialVersionUID = 1;
 
-	@Version
-	private Integer version;
-
-	@Column(name = "bm_name", nullable = false, length=34, unique=true)
+	@Id
+	@GeneratedValue
+	@Column(name="id", unique=true, nullable=false)
+	private Integer id;
+	
+	@Column(name="bm_name", nullable = false)
 	@Size(max = 40)
 	private String name;
 
-	@Column(name = "bm_type", nullable = false)
+	@Column(name="bm_type",nullable = false)
 	@Size(max = 60)
 	private String type;
 
-	@Column(name="bm_description", nullable=true, length=66)
+	@Column( nullable=true, length=66)
 	private String description;
-	
-	@ManyToMany(cascade={CascadeType.ALL})
-	private Set<Tag> tags;
 	
 	/**
 	 * Il est impératif que Les entités JPA se comporte comme les java beans i-e
@@ -69,27 +60,15 @@ public class Bookmark extends PersistentObjectImp {
 	 * qu'un id pour identifier l'élement au sein de la table
 	 */
 
-	public Bookmark() {
-		super();
-	}
+	public Bookmark(){}
 
 	public Bookmark(final String name, final String type, final String description){
-		super();
 		this.name = name;
 		this.type = type;
 		this.description=description;
 	}
-	// constructeur
-	public Bookmark(final String name, final String type, final String description, final Set<Tag> tags) {
-		super();
-		this.name = name;
-		this.type = type;
-		this.description=description;
-		this.tags=tags;
-	}
-
+	
 	/**
-	 * 
 	 * @return the name
 	 */
 	public String getName() {
@@ -97,16 +76,14 @@ public class Bookmark extends PersistentObjectImp {
 	}
 
 	/**
-	 * 
 	 * @param name
-	 *            the name to set
+	 * the name to set
 	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
 	/**
-	 * 
 	 * @return the type
 	 */
 	public String getType() {
@@ -114,7 +91,6 @@ public class Bookmark extends PersistentObjectImp {
 	}
 
 	/**
-	 * 
 	 * @param type
 	 *            the type to set
 	 */
@@ -122,6 +98,34 @@ public class Bookmark extends PersistentObjectImp {
 		this.type = type;
 	}
 
+	/**
+	 * @return the id
+	 */
+	public Integer getId() {
+		return id;
+	}
 
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	
+	/**
+	 * @return the description
+	 */
+	public String getDescription() {
+		return description;
+	}
 
+	/**
+	 *
+	 * @param description the description to set
+	 */
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	
+		
 }
