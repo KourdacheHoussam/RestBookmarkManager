@@ -16,14 +16,14 @@
  */
 package fr.tp.bookmarkmanager.entities;
 import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
-
-
 /**
  * @author Housssam
  * @version 23 nov. 2014
@@ -36,11 +36,11 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(name="BOOKMARKS")
 public class Bookmark implements Serializable{	
-	private static final long serialVersionUID = 1;
+	private static final long serialVersionUID = -1L;
 
 	@Id
-	@GeneratedValue
-	@Column(name="id", unique=true, nullable=false)
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="bm_id")
 	private Integer id;
 	
 	@Column(name="bm_name", nullable = false)

@@ -16,9 +16,11 @@
  */
 package fr.tp.bookmarkmanager.entities;
 import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 /**
@@ -30,11 +32,12 @@ import javax.persistence.Table;
 @Table(name="FAVORITEBOOKMARKS")
 public class FavoriteBookmark implements Serializable{ 
 	
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -3L;
 	@Id
-	@GeneratedValue
-	@Column(name="fbm_id", unique=true, nullable=false)
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="fbm_id")
 	private Integer id;
+	
 	@Column(name="fbm_name", length=33, nullable=false)
 	private String name;
 	@Column(name="fbm_description", length=66, nullable=true)

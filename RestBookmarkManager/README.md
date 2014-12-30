@@ -99,9 +99,22 @@
 **Remarques :**  
 
 	- Sur des grands projets la déclaration de toutes les classes peut surcharger le fichier 	persistence.xml; pour remédier à cela on peut envisager l'utilisation d'un fichier orm.xml où 	l'on	déclarera toutes les entités. Ce fichier sera par la suite importé dans le fichier 	persistence.xml.
-	- L'ajout des annotations @Transaction et @PersistentContext aux opérations des services(@Service) 	suppose l'utilisation	des transaction de type "JTA" au lieu de "RESOURCE_LOCAL" ( à déclarer dans 	persistence.xml :  	transaction-type="JTA".
+	- ERROR: L'ajout des annotations @Transaction et @PersistentContext aux opérations des 	services(@Service) 	suppose l'utilisation	des transaction de type "JTA" au lieu de "RESOURCE_LOCAL" ( 	à déclarer dans 	persistence.xml :  	transaction-type="JTA".
 	
+	-ERROR :  Constraints 'X' and 'Y' have the same set of columns, which is not allowed. Cette vient du   fait que la clé primary spécifiée dans Pojo contient des déclarations de contraintes qu'il ne faut pas utilisé: voici un exemple illustrant cette situation:
+	@Id
+	@GeneratedValue
+	@Column(name="bm_id", unique=true, nullable=false)
+	private Integer id;
+	
+	Doit être remplacé par:
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="bm_id")
+	private Integer id;
 
+	* @GeneratedValue & @Id suffisent pour faire comprendre à hibernate qu'il s'agit d'une clé primaire.
  Les Services REST avec JERSEY  
 -------------------------------------
 	- Au sein des objets REST, i-e les objets exposants les données comme web services;

@@ -6,6 +6,7 @@
     <property name="hibernate.dialect">org.hibernate.dialect.DerbyDialect</property>    
     <property name="hibernate.connection.url"> jdbc:derby://127.0.0.1:1527/derbyDataBase;create=true</property>
     <property name="hibernate.connection.username">user</property>
+    <property name="hibernate.connection.password">user</property>
     <property name="hibernate.hbm2ddl.auto">create</property>
     <property name="hibernate.show_sql">true</property>
     <property name="hibernate.format_sql">true</property>      
