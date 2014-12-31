@@ -11,6 +11,35 @@
 	<!-- Directory scanning for controllers -->
 	<context:annotation-config />
 	<context:component-scan base-package="fr.tp.bookmarkmanager" />
+	
+	<!-- enable transaction configuration with @Transactional -->
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	 <!-- Configure the JPA entity manager factory with Hibernate -->
+    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="jpaVendorAdapter">
+            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+                <property name="showSql" value="true" />
+                <property name="database" value="MYSQL" />
+                <property name="generateDdl" value="false" />
+            </bean>
+        </property>
+        
+        <property name="persistenceUnitName" value="bookmarkpersistence" />
+        
+        <!-- access to the JTA TransactionManager -->  
+        <property name="jpaProperties">
+            <props>
+                <prop key="hibernate.transaction.manager_lookup_class">
+                    org.hibernate.transaction.SunONETransactionManagerLookup
+                </prop>
+            </props>
+        </property>   
+         
+    </bean> 
+    <!-- Configure transaction manager for JPA -->
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory" />
+    </bean>
 
 	<!-- Inject helloService to HelloWorldRWS-->
 
