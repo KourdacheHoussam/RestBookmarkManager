@@ -15,19 +15,17 @@
  * 
  */
 package fr.tp.bookmarkmanager.dao;
-
 import fr.tp.bookmarkmanager.dao.imp.BookmarkDAO;
-import fr.tp.bookmarkmanager.dao.imp.FavoriteBookmarkDAO;
 import fr.tp.bookmarkmanager.entities.Bookmark;
 import fr.tp.bookmarkmanager.entities.FavoriteBookmark;
 import fr.tp.bookmarkmanager.entities.Tag;
-
 /**
  *
  * @author Housssam
  * @version 1 déc. 2014
+ * Mon usine créatrice d'objets DAO
  */
-public class FactoryDAO {
+public class DAOFactory {
 	
 	//protected static final Connection connection=SdzConnection.getInstance();
 	
@@ -36,7 +34,7 @@ public class FactoryDAO {
 	 * la base de données
 	 * @return
 	 */
-	public static GenericDAO<Bookmark> getBookMarkDAO(){
+	public static InterfaceDAO<Bookmark> getBookMarkDAO(){
 		return new BookmarkDAO(null);
 	}
 	/**
@@ -45,7 +43,7 @@ public class FactoryDAO {
 	 * @return
 	 */
 	
-	public static GenericDAO<Tag> getTagDAO(){
+	public static InterfaceDAO<Tag> getTagDAO(){
 		return null; //new GenericDAO<Tag>(null);
 	}
 	/**
@@ -53,8 +51,8 @@ public class FactoryDAO {
 	 * la base de données
 	 * @return
 	 */
-	public static GenericDAO<FavoriteBookmark> getFavoriteBookmarkDAO(){
-		return new FavoriteBookmarkDAO(null);
+	public static InterfaceDAO<FavoriteBookmark> getFavoriteBookmarkDAO(){
+		return null;// new FavoriteBookmarkDAO(null);
 	}
 	
 }

@@ -15,8 +15,6 @@
  * 
  */
 package fr.tp.bookmarkmanager.rest;
-
-
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.FormParam;
@@ -27,15 +25,9 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
-import fr.tp.bookmarkmanager.dao.FactoryDAO;
-import fr.tp.bookmarkmanager.dao.imp.BookmarkDAO;
 import fr.tp.bookmarkmanager.entities.Bookmark;
 import fr.tp.bookmarkmanager.services.BookmarkServiceInt;
-
 /**
  * @author Housssam
  * @version 1 déc. 2014

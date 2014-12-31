@@ -17,21 +17,14 @@
 package fr.tp.bookmarkmanager.dao.imp;
 
 import java.sql.Connection;
-
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-
-import org.hibernate.Query;
-
-import fr.tp.bookmarkmanager.dao.GenericDAO;
+import fr.tp.bookmarkmanager.dao.InterfaceDAO;
 import fr.tp.bookmarkmanager.entities.Bookmark;
-
 /**
  *
  * @author Housssam
  * @version 30 nov. 2014
  */
-public class BookmarkDAO extends GenericDAO<Bookmark> {
+public class BookmarkDAO extends InterfaceDAO<Bookmark> {
 	/**
 	@PersistenceContext
 	private EntityManager entityManager;

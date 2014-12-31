@@ -15,12 +15,6 @@
  * 
  */
 package fr.tp.bookmanager.tests;
-
-
-import javax.persistence.EntityManager;
-import javax.persistence.Persistence;
-
-
 /**
  *
  * @author Housssam

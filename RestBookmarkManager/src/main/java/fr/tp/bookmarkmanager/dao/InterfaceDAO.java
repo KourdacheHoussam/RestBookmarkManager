@@ -17,28 +17,47 @@
 package fr.tp.bookmarkmanager.dao;
 
 import java.sql.Connection;
-
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-
 /**
  *
  * @author Housssam
  * @version 30 nov. 2014
  */
-public abstract class GenericDAO<T> {
+public abstract class InterfaceDAO<T> {
 
-	protected Connection connection;	
+	protected Connection connection=null;	
 	
-	public GenericDAO(Connection connection){
+	public InterfaceDAO(Connection connection){
 		this.connection=connection;
 	}
-	
-	// CRUD METHODS
+	/**
+	 * CREATE
+	 * @param obj 
+	 * @return
+	 */
 	public abstract Integer create(T obj);
+	/**
+	 * DELETE
+	 * @param obj
+	 * @return
+	 */
 	public abstract boolean delete(T obj);
+	/**
+	 * DELETE ALL
+	 * @param obj
+	 * @return
+	 */
 	public abstract boolean deleteAll(T obj);
+	/**
+	 * UPDATE
+	 * @param obj
+	 * @return
+	 */
 	public abstract boolean update(T obj);
+	/**
+	 * FIND
+	 * @param id
+	 * @return
+	 */
 	public abstract T find(int id);
 	
 }

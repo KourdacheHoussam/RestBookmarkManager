@@ -115,7 +115,8 @@
 	private Integer id;
 
 	* @GeneratedValue & @Id suffisent pour faire comprendre à hibernate qu'il s'agit d'une clé primaire.
- Les Services REST avec JERSEY  
+
+Les Services REST avec JERSEY  
 -------------------------------------
 	- Au sein des objets REST, i-e les objets exposants les données comme web services;
 	  on aura seulement besoin d'un FactoryDAO, sur lequel on appelera la méthode voulues, 

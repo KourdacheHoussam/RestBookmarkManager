@@ -15,16 +15,12 @@
  * 
  */
 package fr.tp.bookmarkmanager.rest;
-
 /**
  *
  * @author Housssam
  * @version 25 déc. 2014
  */
-
 import java.util.ArrayList;
-
-import javax.servlet.ServletContext;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -32,19 +28,9 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
-
-import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationContextAware;
-import org.springframework.web.context.support.WebApplicationContextUtils;
-
-import com.sun.jersey.api.core.InjectParam;
-
 import fr.tp.bookmarkmanager.entities.Bookmark;
 import fr.tp.bookmarkmanager.services.HelloWorldServiceInt;
-import fr.tp.bookmarkmanager.services.imp.HelloWorldServiceImp;
 /**
  * Root resource (exposed at "services" path)
  */
