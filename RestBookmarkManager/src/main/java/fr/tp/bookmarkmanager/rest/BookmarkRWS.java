@@ -15,9 +15,10 @@
  * 
  */
 package fr.tp.bookmarkmanager.rest;
+import java.util.List;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
-import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -25,7 +26,10 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+
+import org.apache.commons.logging.Log;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import fr.tp.bookmarkmanager.entities.Bookmark;
 import fr.tp.bookmarkmanager.services.BookmarkServiceInt;
 /**
@@ -54,54 +58,31 @@ public class BookmarkRWS {
 	@Path("/add")
 	public Response addBookmark(){
 		Bookmark bm=new Bookmark("Added_BM", "A", "Favorite A");
-		bookmarkservice.saveBookmark(bm);
+		bookmarkservice.createBookmark(bm);			
 		return Response.ok(bm, MediaType.APPLICATION_JSON).build();
-	}
-	
+	}	
+	@GET
+	@Path("/getAll")
+	@Produces({MediaType.APPLICATION_JSON})
+	public Response getAllBookmarks(){
+		List<Bookmark> bms = bookmarkservice.getAllBookmarks();
+		return Response.status(200).entity(bms).build();
+	}	
 	/**
 	 * Creation d'un bookmark
 	 * @param bookmark
 	 * @return
 	 */
 	@POST
-	@Path("/create")
+	@Path("/add/form")
 	@Consumes({ MediaType.APPLICATION_JSON })
 	@Produces({ MediaType.TEXT_HTML })
-	//@Transactional
 	public Response createBookMark(Bookmark bookmark) {
-		// il nous reste qu'à appler la méthode create()
-		// de l'objet FactoryDAO
-	//	bookMarkDAO.create(bookmark);
-		
-		//vaut mieux utiliser un objet Response pour retourner 
-		// le résultat car il permet de renvoyer une réponse bien structuré
-		// avec les bons entêtes, ainsi le client pourra identifier 
-		// facilement l'aboutissement et le résutlat de sa requête
 		
 		return Response.status(200).entity("Un nouveau BookMark vient d'être créé").build();
-	}
-
+	}	
 	/**
-	 * Creation d'un bookmark depuis le formulaire
-	 * @param bookmark_name
-	 * @param bookmark_type
-	 * @return
-	 */
-	@POST
-	@Consumes({MediaType.APPLICATION_FORM_URLENCODED})
-	@Produces({MediaType.TEXT_HTML})
-	//@Transactional
-	public Response createBookMarkFromFORM(	@FormParam("bm_name") String bookmark_name,
-			@FormParam("bm_type") String bookmark_type, @FormParam("bm_description") String bookmark_desc){
-		
-		Bookmark bookmark=new Bookmark(bookmark_name, bookmark_type, bookmark_desc);
-	//	bookMarkDAO.create(bookmark);
-		return Response.status(200).entity("un nouveau bookmark vient d'être créé avec un id = "+bookmark.getId()).build();
-	}
-	
-	
-	/**
-	 * Supprimer un bookmark
+	 * DELETE BOOKMARK
 	 *
 	 * @param bookmark
 	 * @return
@@ -109,51 +90,36 @@ public class BookmarkRWS {
 	@DELETE
 	@Path("/delete/")
 	@Produces({MediaType.TEXT_HTML})
-//	@Transactional
 	public Response deleteBookMark(Bookmark bookmark){
-		//if(bookMarkDAO.delete(bookmark))
-			//return Response.status(200).entity("Le bookmark dont l'id =" + bookmark.getId()+ " a été supprimé.").build();
-		//else
-			//return Response.status(400).entity("Le bookmark dont l'id = "+ bookmark.getId()+ " n'a pas été supprimé").build();
 		return null;
-	}
-	
-	
+	}	
 	/**
-	 * Delete bookmark by id
+	 * Delete BOOKMARK BY ID
 	 * @param id
 	 * @return
 	 */
 	@DELETE
 	@Path("/delete/{id}")
 	@Produces({MediaType.TEXT_HTML})
-//	@Transactional
 	public Response deleteBookMarkByID(@PathParam("id") Integer id){
 		Bookmark bm=new Bookmark();
-		bm.setId(id);
-		
-		/**if(bookMarkDAO.delete(bm))
-			return Response.status(200).entity("Le bookmark dont l'id =" + bm.getId()+ " a été supprimé.").build();
-		else
-			return Response.status(400).entity("Le bookmark dont l'id = "+ bm.getId()+ " n'a pas été supprimé").build();		
-		 */
+		bm.setId(id);		
 		return null;
-	}
-	
-	
+	}	
 	/**
-	 * Suppression de tous les bookmarks
+	 * DELETE ALL BOOKMARKS
 	 * @return
 	 */
 	@DELETE
 	@Path("/delete/all")
-	@Produces({MediaType.TEXT_HTML})
+	@Produces({MediaType.TEXT_PLAIN})
 	public Response deleteAllBookMarks(){
-		//bookMarkDAO.deleteAll(null);
-		return Response.status(200).entity("tous les bookmarks ont été supprimé").build();
+		int nb_deleted=bookmarkservice.deleteAllBookmarks();
+		System.out.println("nb :"+nb_deleted);
+		return Response.ok(nb_deleted + " bookmarks deleted. ").build();
 	}
 	
-	/** ----------- Beans Setters ------------ */
+	/** ---------------------------------- Beans Setters ------------------------------- */
 	/**
 	 * @param bookmarkservice the bookmarkservice to set
 	 */

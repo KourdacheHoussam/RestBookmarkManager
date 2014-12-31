@@ -15,10 +15,12 @@
  * 
  */
 package fr.tp.bookmarkmanager.services.imp;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import org.springframework.stereotype.Service;
+import fr.tp.bookmarkmanager.dao.DAOFactory;
+import fr.tp.bookmarkmanager.dao.InterfaceDAO;
 import fr.tp.bookmarkmanager.entities.Bookmark;
 import fr.tp.bookmarkmanager.services.BookmarkServiceInt;
 /**
@@ -30,18 +32,46 @@ import fr.tp.bookmarkmanager.services.BookmarkServiceInt;
 public class BookmarkServiceImp implements BookmarkServiceInt{
 	EntityManager em;
 	EntityManagerFactory emf;
+
+	
+//		emf=Persistence.createEntityManagerFactory("bookmarkpersistence");
+//		em=emf.createEntityManager();	
+//		em.getTransaction().begin();
+//		em.persist(instanceBM);
+//		em.flush(); // force transaction
+//		em.getTransaction().commit();
+//		em.close();
+//		emf.close();
+	
 	/**
-	 * Save new bookmark 
-	 */
-	public Bookmark saveBookmark(final Bookmark instanceBM) {
-		emf=Persistence.createEntityManagerFactory("bookmarkpersistence");
-		em=emf.createEntityManager();	
-		em.getTransaction().begin();
-		em.persist(instanceBM);
-		em.flush(); // force transaction
-		em.getTransaction().commit();
-		em.close();
-		emf.close();
-		return instanceBM;
+	 * CREATE BOOKMARK
+	 * {@inheritDoc}
+	 */	
+	public Integer createBookmark(Bookmark instance) {
+		InterfaceDAO<Bookmark> bm_dao =DAOFactory.getBookMarkDAO();
+		return bm_dao.create(instance);		
 	}
+
+	/**
+	 * GET ALL BOOKMARKS
+	 * {@inheritDoc}
+	 */
+	
+	public List<Bookmark> getAllBookmarks() {
+		InterfaceDAO<Bookmark> bm_dao =DAOFactory.getBookMarkDAO();
+		return bm_dao.getAll();
+	}
+
+	/**
+	 * DELETE ALL BOOKMARKS
+	 * {@inheritDoc}
+	 * @return 
+	 */	
+	public Integer deleteAllBookmarks() {
+		InterfaceDAO<Bookmark> bm_dao =DAOFactory.getBookMarkDAO();
+		return bm_dao.deleteAll();
+	}
+
+	
+	
 }

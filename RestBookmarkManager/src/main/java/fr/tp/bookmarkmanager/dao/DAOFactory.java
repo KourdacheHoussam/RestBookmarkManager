@@ -15,7 +15,12 @@
  * 
  */
 package fr.tp.bookmarkmanager.dao;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import fr.tp.bookmarkmanager.dao.imp.BookmarkDAO;
+import fr.tp.bookmarkmanager.dao.imp.FavoriteBookmarkDAO;
+import fr.tp.bookmarkmanager.dao.imp.TagDAO;
 import fr.tp.bookmarkmanager.entities.Bookmark;
 import fr.tp.bookmarkmanager.entities.FavoriteBookmark;
 import fr.tp.bookmarkmanager.entities.Tag;
@@ -27,32 +32,34 @@ import fr.tp.bookmarkmanager.entities.Tag;
  */
 public class DAOFactory {
 	
-	//protected static final Connection connection=SdzConnection.getInstance();
-	
+	protected static EntityManagerFactory emf=Persistence.createEntityManagerFactory("bookmarkpersistence");
+	protected static EntityManager em=emf.createEntityManager();	
+
 	/**
-	 * retourne un objet de la classe DAO de type BookMark accédant à
-	 * la base de données
+	 * CONSTRUCTOR
+	 */
+	public DAOFactory() {}
+	/**
+	 * MANUFACTORING BOOKMARK DAO
 	 * @return
 	 */
 	public static InterfaceDAO<Bookmark> getBookMarkDAO(){
-		return new BookmarkDAO(null);
+		return new BookmarkDAO(em);
 	}
 	/**
-	 * retourne un objet de la classe DAO de type TAG accédant à
-	 * la base de données
+	 * MANUFACTORING TAG DAO
 	 * @return
 	 */
 	
 	public static InterfaceDAO<Tag> getTagDAO(){
-		return null; //new GenericDAO<Tag>(null);
+		return new TagDAO(em);
 	}
 	/**
-	 * retourne un objet de la classe DAO de type FavoriteBookMark accédant à
-	 * la base de données
+	 * MANUFACTORING FAVORITE BOOKMARK DAO
 	 * @return
 	 */
 	public static InterfaceDAO<FavoriteBookmark> getFavoriteBookmarkDAO(){
-		return null;// new FavoriteBookmarkDAO(null);
+		return new FavoriteBookmarkDAO(em);
 	}
 	
 }

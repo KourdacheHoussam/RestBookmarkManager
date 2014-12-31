@@ -16,6 +16,8 @@
  */
 package fr.tp.bookmarkmanager.services;
 
+import java.util.List;
+
 import fr.tp.bookmarkmanager.entities.Bookmark;
 
 /**
@@ -24,6 +26,9 @@ import fr.tp.bookmarkmanager.entities.Bookmark;
  * @version 25 déc. 2014
  */
 public interface BookmarkServiceInt {
-	Bookmark saveBookmark(final Bookmark instance);
+	
+	Integer createBookmark(final Bookmark instance);
+	List<Bookmark> getAllBookmarks();
+	Integer deleteAllBookmarks();
 }
 

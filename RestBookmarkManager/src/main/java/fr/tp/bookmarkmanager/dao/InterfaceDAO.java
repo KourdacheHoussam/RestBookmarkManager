@@ -15,8 +15,9 @@
  * 
  */
 package fr.tp.bookmarkmanager.dao;
+import java.util.List;
 
-import java.sql.Connection;
+import javax.persistence.EntityManager;
 /**
  *
  * @author Housssam
@@ -24,10 +25,10 @@ import java.sql.Connection;
  */
 public abstract class InterfaceDAO<T> {
 
-	protected Connection connection=null;	
+	protected static EntityManager em;
 	
-	public InterfaceDAO(Connection connection){
-		this.connection=connection;
+	public InterfaceDAO(EntityManager em){
+		this.em=em;
 	}
 	/**
 	 * CREATE
@@ -42,11 +43,17 @@ public abstract class InterfaceDAO<T> {
 	 */
 	public abstract boolean delete(T obj);
 	/**
+	 * GET ALL obj
+	 * @param obj
+	 * @return
+	 */	
+	public abstract List<T> getAll();
+	/**
 	 * DELETE ALL
 	 * @param obj
 	 * @return
 	 */
-	public abstract boolean deleteAll(T obj);
+	public abstract Integer deleteAll();
 	/**
 	 * UPDATE
 	 * @param obj
