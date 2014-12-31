@@ -8,21 +8,18 @@
 						http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
 
 
-	<!-- Le répertoire à scanner pour chercher les controleurs -->
+	<!-- Directory scanning for controllers -->
 	<context:annotation-config />
 	<context:component-scan base-package="fr.tp.bookmarkmanager" />
 
-	<!-- JPA Configuration -->
-	<tx:annotation-driven transaction-manager="transactionManager" />
-	
-	<!-- injection de l'interface helloService dans le bean helloWorld via la 
-		propriete helloservice -->
-	<bean id="helloService" class="fr.tp.bookmarkmanager.services.imp.HelloWorldServiceImp" />
-	<bean name="helloWorld" class="fr.tp.bookmarkmanager.rest.HelloWorldRWS">
-		<property name="helloservice" ref="helloService" />
-	</bean>
+	<!-- Inject helloService to HelloWorldRWS-->
 
-	<!-- injection de l'interface BookmarkService -->
+<!-- 	<bean id="helloService" class="fr.tp.bookmarkmanager.services.imp.HelloWorldServiceImp" /> -->
+<!-- 	<bean name="helloworld" class="fr.tp.bookmarkmanager.rest.HelloWorldRWS"> -->
+<!-- 		<property name="helloservice" ref="helloService" /> -->
+<!-- 	</bean> -->
+
+	<!-- Inject BookmarkService to BookmarkRWS -->
 	<bean id="bookmarkService" class="fr.tp.bookmarkmanager.services.imp.BookmarkServiceImp" />
 	<bean name="bookmarkRWS" class="fr.tp.bookmarkmanager.rest.BookmarkRWS">
 		<property name="bookmarkservice" ref="bookmarkService"></property>

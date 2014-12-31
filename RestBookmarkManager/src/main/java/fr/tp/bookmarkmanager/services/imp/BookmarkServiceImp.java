@@ -16,8 +16,6 @@
  */
 package fr.tp.bookmarkmanager.services.imp;
 import java.util.List;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import org.springframework.stereotype.Service;
 import fr.tp.bookmarkmanager.dao.DAOFactory;
 import fr.tp.bookmarkmanager.dao.InterfaceDAO;
@@ -30,19 +28,6 @@ import fr.tp.bookmarkmanager.services.BookmarkServiceInt;
  */
 @Service
 public class BookmarkServiceImp implements BookmarkServiceInt{
-	EntityManager em;
-	EntityManagerFactory emf;
-
-	
-//		emf=Persistence.createEntityManagerFactory("bookmarkpersistence");
-//		em=emf.createEntityManager();	
-//		em.getTransaction().begin();
-//		em.persist(instanceBM);
-//		em.flush(); // force transaction
-//		em.getTransaction().commit();
-//		em.close();
-//		emf.close();
-	
 	/**
 	 * CREATE BOOKMARK
 	 * {@inheritDoc}
@@ -71,7 +56,4 @@ public class BookmarkServiceImp implements BookmarkServiceInt{
 		InterfaceDAO<Bookmark> bm_dao =DAOFactory.getBookMarkDAO();
 		return bm_dao.deleteAll();
 	}
-
-	
-	
 }

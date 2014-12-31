@@ -26,10 +26,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-
-import org.apache.commons.logging.Log;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import fr.tp.bookmarkmanager.entities.Bookmark;
 import fr.tp.bookmarkmanager.services.BookmarkServiceInt;
 /**

@@ -25,7 +25,7 @@ import javax.persistence.EntityManager;
  */
 public abstract class InterfaceDAO<T> {
 
-	protected static EntityManager em;
+	protected EntityManager em=null;
 	
 	public InterfaceDAO(EntityManager em){
 		this.em=em;
