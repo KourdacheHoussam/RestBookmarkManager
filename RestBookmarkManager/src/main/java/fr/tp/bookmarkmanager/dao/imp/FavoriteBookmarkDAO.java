@@ -18,22 +18,27 @@ package fr.tp.bookmarkmanager.dao.imp;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 
 import fr.tp.bookmarkmanager.dao.InterfaceDAO;
+import fr.tp.bookmarkmanager.entities.Bookmark;
 import fr.tp.bookmarkmanager.entities.FavoriteBookmark;
+import fr.tp.bookmarkmanager.entities.Tag;
 /**
  *
  * @author Housssam
  * @version 31 déc. 2014
  */
 public class FavoriteBookmarkDAO extends InterfaceDAO<FavoriteBookmark> {
-
+	
+	EntityTransaction et = null;
 	/**
 	 * CONSTRUCTOR
 	 * @param connection
 	 */
 	public FavoriteBookmarkDAO(EntityManager em) {
 		super(em);
+		et = em.getTransaction();
 	}
 
 	/**
@@ -82,18 +87,36 @@ public class FavoriteBookmarkDAO extends InterfaceDAO<FavoriteBookmark> {
 	 */
 	
 	@Override
-	public boolean update(FavoriteBookmark obj) {
-		return false;
+	public FavoriteBookmark update(FavoriteBookmark obj) {
+		try{
+			em.merge(obj);
+			et.commit();
+		}catch(RuntimeException e){
+			if (et != null && et.isActive()) {
+				et.rollback();
+			}
+			throw e;
+		}
+		return em.find(FavoriteBookmark.class, obj.getId());
+	}
+	/**
+	 * GET FAVORITE BOOKMARK BY ID
+	 * {@inheritDoc}
+	 */	
+	@Override
+	public FavoriteBookmark findByID(Integer id) {
+		return null;
 	}
 
 	/**
-	 * FIND A FAVORITE BOOKMARK WITH THE GIVEN ID
+	 * DELETE FAVORITE BOOKMARK BY ID
 	 * {@inheritDoc}
 	 */
 	
 	@Override
-	public FavoriteBookmark find(int id) {
-		return null;
+	public void deleteByID(Integer id) {
+		FavoriteBookmark fbm=em.find(FavoriteBookmark.class, id);
+		em.remove(fbm);
 	}
 
 }

@@ -16,12 +16,15 @@
  */
 package fr.tp.bookmarkmanager.entities;
 import java.io.Serializable;
+import java.util.Collection;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 /**
@@ -51,23 +54,48 @@ public class Bookmark implements Serializable{
 	@Size(max = 60)
 	private String type;
 
-	@Column( nullable=true, length=66)
+	@Column(name="bm_description", nullable=true, length=66)
 	private String description;
+	
+	@OneToMany
+	private Collection<Tag> tags;
 	
 	/**
 	 * Il est impératif que Les entités JPA se comporte comme les java beans i-e
 	 * avoir un constructuer vide sans paramètre et des accesseurs/getters ainsi
 	 * qu'un id pour identifier l'élement au sein de la table
 	 */
-
+	
 	public Bookmark(){}
 
-	public Bookmark(final String name, final String type, final String description){
+	/**
+	 * @param id
+	 * @param name
+	 * @param type
+	 * @param description
+	 */
+	public Bookmark(String name, String type, String description) {
+		super();
 		this.name = name;
 		this.type = type;
-		this.description=description;
+		this.description = description;
 	}
 	
+	/**
+	 * @param id
+	 * @param name
+	 * @param type
+	 * @param description
+	 * @param tags
+	 */
+	public Bookmark(String name, String type, String description, Collection<Tag> tags) {
+		super();
+		this.name = name;
+		this.type = type;
+		this.description = description;
+		this.tags = tags;
+	}
+
 	/**
 	 * @return the name
 	 */

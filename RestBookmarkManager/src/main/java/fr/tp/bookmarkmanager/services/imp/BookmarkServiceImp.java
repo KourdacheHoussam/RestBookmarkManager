@@ -36,12 +36,10 @@ public class BookmarkServiceImp implements BookmarkServiceInt{
 		InterfaceDAO<Bookmark> bm_dao =DAOFactory.getBookMarkDAO();
 		return bm_dao.create(instance);		
 	}
-
 	/**
 	 * GET ALL BOOKMARKS
 	 * {@inheritDoc}
-	 */
-	
+	 */	
 	public List<Bookmark> getAllBookmarks() {
 		InterfaceDAO<Bookmark> bm_dao =DAOFactory.getBookMarkDAO();
 		return bm_dao.getAll();
@@ -56,4 +54,25 @@ public class BookmarkServiceImp implements BookmarkServiceInt{
 		InterfaceDAO<Bookmark> bm_dao =DAOFactory.getBookMarkDAO();
 		return bm_dao.deleteAll();
 	}
+
+	/**
+	 * GET BOOKMARK BY ID
+	 * {@inheritDoc}
+	 */	
+	public Bookmark getBookmarkByID(Integer id) {
+		InterfaceDAO<Bookmark> bm_dao =DAOFactory.getBookMarkDAO();
+		return bm_dao.findByID(id);
+	}
+
+	/**
+	 * DELETE BY ID
+	 * {@inheritDoc}
+	 */
+	
+	public void deleteByID(Integer id) {
+		InterfaceDAO<Bookmark> bm_dao =DAOFactory.getBookMarkDAO();
+		bm_dao.deleteByID(id);
+	}
+
+	
 }

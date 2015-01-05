@@ -18,6 +18,8 @@ package fr.tp.bookmarkmanager.dao;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
+
 import fr.tp.bookmarkmanager.dao.imp.BookmarkDAO;
 import fr.tp.bookmarkmanager.dao.imp.FavoriteBookmarkDAO;
 import fr.tp.bookmarkmanager.dao.imp.TagDAO;

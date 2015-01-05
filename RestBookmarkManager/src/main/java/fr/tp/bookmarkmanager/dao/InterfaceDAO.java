@@ -37,7 +37,13 @@ public abstract class InterfaceDAO<T> {
 	 */
 	public abstract Integer create(T obj);
 	/**
-	 * DELETE
+	 * DELETE OBJ BY ID
+	 * @param id
+	 * @return
+	 */
+	public abstract void deleteByID(Integer id);
+	/**
+	 * DELETE 
 	 * @param obj
 	 * @return
 	 */
@@ -47,7 +53,13 @@ public abstract class InterfaceDAO<T> {
 	 * @param obj
 	 * @return
 	 */	
-	public abstract List<T> getAll();
+	public abstract List<T> getAll() ;
+	/** 
+	 * GET ENTITY BY ID
+	 * @param id
+	 * @return
+	 */
+	public abstract T findByID(Integer id);
 	/**
 	 * DELETE ALL
 	 * @param obj
@@ -59,13 +71,8 @@ public abstract class InterfaceDAO<T> {
 	 * @param obj
 	 * @return
 	 */
-	public abstract boolean update(T obj);
-	/**
-	 * FIND
-	 * @param id
-	 * @return
-	 */
-	public abstract T find(int id);
+	public abstract T update(T obj);
+	
 	
 }
 
