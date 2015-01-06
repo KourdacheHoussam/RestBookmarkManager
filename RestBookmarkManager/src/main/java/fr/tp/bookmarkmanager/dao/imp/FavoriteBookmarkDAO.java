@@ -22,14 +22,14 @@ import javax.persistence.EntityTransaction;
 
 import fr.tp.bookmarkmanager.dao.InterfaceDAO;
 import fr.tp.bookmarkmanager.entities.Bookmark;
-import fr.tp.bookmarkmanager.entities.FavoriteBookmark;
+import fr.tp.bookmarkmanager.entities.PinnedBookmark;
 import fr.tp.bookmarkmanager.entities.Tag;
 /**
  *
  * @author Housssam
  * @version 31 déc. 2014
  */
-public class FavoriteBookmarkDAO extends InterfaceDAO<FavoriteBookmark> {
+public class FavoriteBookmarkDAO extends InterfaceDAO<PinnedBookmark> {
 	
 	EntityTransaction et = null;
 	/**
@@ -47,7 +47,7 @@ public class FavoriteBookmarkDAO extends InterfaceDAO<FavoriteBookmark> {
 	 */
 	
 	@Override
-	public Integer create(FavoriteBookmark obj) {
+	public Integer create(PinnedBookmark obj) {
 		return null;
 	}
 
@@ -57,7 +57,7 @@ public class FavoriteBookmarkDAO extends InterfaceDAO<FavoriteBookmark> {
 	 */
 	
 	@Override
-	public List<FavoriteBookmark> getAll() {
+	public List<PinnedBookmark> getAll() {
 		return null;
 	}
 
@@ -67,7 +67,7 @@ public class FavoriteBookmarkDAO extends InterfaceDAO<FavoriteBookmark> {
 	 */
 	
 	@Override
-	public boolean delete(FavoriteBookmark obj) {
+	public boolean delete(PinnedBookmark obj) {
 		return false;
 	}
 
@@ -87,7 +87,7 @@ public class FavoriteBookmarkDAO extends InterfaceDAO<FavoriteBookmark> {
 	 */
 	
 	@Override
-	public FavoriteBookmark update(FavoriteBookmark obj) {
+	public PinnedBookmark update(PinnedBookmark obj) {
 		try{
 			em.merge(obj);
 			et.commit();
@@ -97,14 +97,14 @@ public class FavoriteBookmarkDAO extends InterfaceDAO<FavoriteBookmark> {
 			}
 			throw e;
 		}
-		return em.find(FavoriteBookmark.class, obj.getId());
+		return em.find(PinnedBookmark.class, obj.getId());
 	}
 	/**
 	 * GET FAVORITE BOOKMARK BY ID
 	 * {@inheritDoc}
 	 */	
 	@Override
-	public FavoriteBookmark findByID(Integer id) {
+	public PinnedBookmark findByID(Integer id) {
 		return null;
 	}
 
@@ -115,7 +115,7 @@ public class FavoriteBookmarkDAO extends InterfaceDAO<FavoriteBookmark> {
 	
 	@Override
 	public void deleteByID(Integer id) {
-		FavoriteBookmark fbm=em.find(FavoriteBookmark.class, id);
+		PinnedBookmark fbm=em.find(PinnedBookmark.class, id);
 		em.remove(fbm);
 	}
 

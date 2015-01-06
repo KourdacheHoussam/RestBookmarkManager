@@ -7,14 +7,22 @@
 		
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<class>fr.tp.bookmarkmanager.entities.Bookmark</class>
-		<class>fr.tp.bookmarkmanager.entities.FavoriteBookmark</class>
+		<class>fr.tp.bookmarkmanager.entities.PinnedBookmark</class>
 		<class>fr.tp.bookmarkmanager.entities.Tag</class>
 		<!-- <mapping-file>META-INF/orm.xml</mapping-file> -->
 		<exclude-unlisted-classes>false</exclude-unlisted-classes>
 		<properties>
 			<property name="javax.persistence.jdbc.url"
-				value="jdbc:derby://localhost:1521/DataBase;create=true" />
-		
+				value="jdbc:derby://localhost:1527/derbyDataBase;create=true" />
+			<property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver" />
+			<property name="javax.persistence.jdbc.user" value="user" />
+			<property name="javax.persistence.jdbc.password" value="user" />
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.format_sql" value="true" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.DerbyDialect" />
+			<property name="hibernate.transaction.manager_lookup_class"
+				value="org.hibernate.transaction.SunONETransactionManagerLookup" />
 			<property name="hibernate.archive.autodetection" value="class, hbm" />
 		</properties>
 	</persistence-unit>

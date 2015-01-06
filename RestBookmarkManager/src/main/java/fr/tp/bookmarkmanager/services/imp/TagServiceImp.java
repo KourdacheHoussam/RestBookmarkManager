@@ -31,8 +31,7 @@ public class TagServiceImp implements TagServiceInt {
 	 * CREATE TAG
 	 * {@inheritDoc}
 	 */	
-	public Integer createTag(Tag instance) {
-		
+	public Integer createTag(Tag instance) {		
 		return tag_dao.create(instance);		
 	}
 	/**

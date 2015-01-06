@@ -25,13 +25,14 @@
 			<param-value>fr.tp.bookmarkmanager.rest</param-value>
 		</init-param>
 		<init-param>
-			<param-name>com.sun.jersey.spi.container.ContainerRequestFilters</param-name>
-			<param-value>com.sun.jersey.api.container.filter.LoggingFilter</param-value>
+		    <param-name>jersey.config.server.provider.classnames</param-name>
+		    <param-value>org.glassfish.jersey.filter.LoggingFilter</param-value>
 		</init-param>
 		<init-param>
 			<param-name>com.sun.jersey.spi.container.ContainerResponseFilters</param-name>
 			<param-value>com.sun.jersey.api.container.filter.LoggingFilter</param-value>
 		</init-param>
+		
 		<init-param>
 			<param-name>cors.allowGenericHttpRequests</param-name>
 			<param-value>true</param-value>
@@ -46,11 +47,15 @@
 		</init-param>
 		<init-param>
 			<param-name>cors.supportedMethods</param-name>
-			<param-value>GET, HEAD, POST, OPTIONS</param-value>
+			<param-value>GET, POST, HEAD, PUT, DELETE</param-value>
 		</init-param>
 		<init-param>
 			<param-name>cors.supportedHeaders</param-name>
 			<param-value>Content-Type, X-Requested-With</param-value>
+		</init-param>
+		<init-param>
+			<param-name>cors.tagRequests</param-name>
+			<param-value>true</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>

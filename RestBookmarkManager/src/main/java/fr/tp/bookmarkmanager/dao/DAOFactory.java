@@ -24,7 +24,7 @@ import fr.tp.bookmarkmanager.dao.imp.BookmarkDAO;
 import fr.tp.bookmarkmanager.dao.imp.FavoriteBookmarkDAO;
 import fr.tp.bookmarkmanager.dao.imp.TagDAO;
 import fr.tp.bookmarkmanager.entities.Bookmark;
-import fr.tp.bookmarkmanager.entities.FavoriteBookmark;
+import fr.tp.bookmarkmanager.entities.PinnedBookmark;
 import fr.tp.bookmarkmanager.entities.Tag;
 /**
  *
@@ -60,7 +60,7 @@ public class DAOFactory {
 	 * MANUFACTORING FAVORITE BOOKMARK DAO
 	 * @return
 	 */
-	public static InterfaceDAO<FavoriteBookmark> getFavoriteBookmarkDAO(){
+	public static InterfaceDAO<PinnedBookmark> getFavoriteBookmarkDAO(){
 		return new FavoriteBookmarkDAO(em);
 	}
 	

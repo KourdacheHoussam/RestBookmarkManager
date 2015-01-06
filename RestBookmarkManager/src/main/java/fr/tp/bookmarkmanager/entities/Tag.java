@@ -43,7 +43,10 @@ public class Tag implements Serializable{
 	@Column(name="tag_value")
 	private String tag_value;
 	
-	public Tag(){}
+	public Tag(){
+		System.err.println(id +"/"+tag_value);
+		
+	}
 
 	public Tag(String value){
 		this.tag_value=value;

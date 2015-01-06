@@ -24,7 +24,7 @@
 
 	<!-- Inject BookmarkService to BookmarkRWS -->
 	<bean id="bookmarkService" class="fr.tp.bookmarkmanager.services.imp.BookmarkServiceImp"></bean>
-	<bean name="bookmarkRWS" class="fr.tp.bookmarkmanager.rest.BoomarkRWS">
+	<bean name="bookmarkRWS" class="fr.tp.bookmarkmanager.rest.BookmarkRWS">
 		<property name="bookmarkservice" ref="bookmarkService"></property>
 	</bean>
 
