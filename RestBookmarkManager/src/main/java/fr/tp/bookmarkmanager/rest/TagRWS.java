@@ -29,11 +29,14 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import org.codehaus.jettison.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import com.sun.jersey.api.core.HttpContext;
 
 import fr.tp.bookmarkmanager.entities.Tag;
 import fr.tp.bookmarkmanager.services.TagServiceInt;
@@ -61,17 +64,22 @@ public class TagRWS {
 	//@Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	
 	@POST
-	@Path("/add/{tag_val}")	
-	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
-	public Response createTagFromForm(@PathParam("tag_val") String tag_val){
-		Tag tag=new Tag(tag_val);
-		int id = tagServiceInt.createTag(tag);
-		tag.setId(id);
+	@Path("/add")	
+	@Produces({ MediaType.APPLICATION_JSON })
+	public Response createTagFromForm(@QueryParam("tag_value") String tag_value, @Context HttpContext context){
+
+	    String url = context.getRequest().getAbsolutePath().getPath();
+	    String query = context.getRequest().getRequestUri().toASCIIString();
+	    System.err.println(" la valeur de l'url="+url.toString());
+		
+		System.err.println(" la valeur du tag_val ="+tag_value);
+		Tag tag=new Tag(tag_value);
+		tagServiceInt.createTag(tag);		
 		return Response.status(200).entity(tag)
 				.header("Access-Control-Allow-Origin", "*")
 				.header("Access-Control-Allow-Methods", "POST, DELETE, GET, PUT").build();
 	}
-
+	
 	/**
 	 * GET ALL TAGS
 	 * 
@@ -119,21 +127,23 @@ public class TagRWS {
 	}
 
 	/**
-	 * DELETE ALL TAGS
-	 * 
+	 * DELETE ALL TAGS 
 	 * @return
 	 */
 	@DELETE
 	@Path("/delete/all")
-	@Produces({ MediaType.TEXT_PLAIN })
-	public Response deleteAllTags() {
+	@Produces({MediaType.APPLICATION_JSON})
+	@Consumes({MediaType.APPLICATION_JSON})
+	public Response deleteAllTags()  throws SQLException{
 		int nb = tagServiceInt.deleteAllTags();
-		return Response.status(200).entity(nb + " tags deleted").build();
+		String rep="{'Number_Tags_deleted':"+nb+"}";
+		return Response.status(200).entity(rep)
+				.header("Access-Control-Allow-Origin", "*")
+				.header("Access-Control-Allow-Methods", "DELETE").build();
 	}
 
 	/**
-	 * ---------------------------------- Beans Setters
-	 * -------------------------------
+	 * ------ Beans Setters	
 	 */
 	/**
 	 * @param tagServiceInt

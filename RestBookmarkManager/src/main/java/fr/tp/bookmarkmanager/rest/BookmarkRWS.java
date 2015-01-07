@@ -28,6 +28,7 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -72,26 +73,17 @@ public class BookmarkRWS {
 	 * @return
 	 */
 	@POST
-	@Path("/add/{name}/{type}/{description}/{tags}")
-	@Consumes({ MediaType.APPLICATION_JSON })
+	@Path("/add")
 	@Produces({ MediaType.APPLICATION_JSON })
 	public Response createBookMark(
-			@PathParam("name")String name,
-			@PathParam("type")String type,	
-			@PathParam("description")String description,
-			@PathParam("tags")String tags){
-		System.out.println("name: "+name+" type: "+type+" desc:"+description);
-		List<String> tags_col=Arrays.asList(tags.split("-"));
-		ArrayList<Tag> tags_data =new ArrayList<Tag>();
-		for(int i=0;i<tags_col.size(); i++){
-			Tag t=new Tag();
-			t.setId(i);
-			t.setTag_value(tags_col.get(i));
-			tags_data.add(t);
-		}
-		Bookmark bm=new Bookmark(name, type, description,tags_data);
+			@QueryParam("name")String name,
+			@QueryParam("type")String type,	
+			@QueryParam("description")String description){
+		Bookmark bm=new Bookmark(name, type, description);
 		int id=bookmarkservice.createBookmark(bm);
-		return Response.status(200).entity("Un nouveau BookMark vient d'être créé dont le id ="+id).build();
+		return Response.status(200).entity("Un nouveau BookMark vient d'être créé dont le id ="+id)
+				.header("Access-Control-Allow-Origin", "*")
+				.header("Access-Control-Allow-Methods", "POST, DELETE, GET, PUT").build();
 	}	
 	@GET
 	@Path("/getAll")
@@ -141,7 +133,10 @@ public class BookmarkRWS {
 	public Response deleteAllBookMarks(){
 		int nb_deleted=bookmarkservice.deleteAllBookmarks();
 		System.out.println("nb :"+nb_deleted);
-		return Response.ok(nb_deleted + " bookmarks deleted. ").build();
+		return Response.ok(nb_deleted + " bookmarks deleted. ")
+				.header("Access-Control-Allow-Origin", "*")
+				.header("Access-Control-Allow-Headers", "Content-Type")
+				.header("Access-Control-Allow-Methods", "DELETE, GET, POST,  PUT").build();
 	}
 	
 	/** ---------------------------------- Beans Setters ------------------------------- */

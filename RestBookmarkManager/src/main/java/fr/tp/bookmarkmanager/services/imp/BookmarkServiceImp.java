@@ -28,12 +28,12 @@ import fr.tp.bookmarkmanager.services.BookmarkServiceInt;
  */
 @Service
 public class BookmarkServiceImp implements BookmarkServiceInt{
+	InterfaceDAO<Bookmark> bm_dao =DAOFactory.getBookMarkDAO();
 	/**
 	 * CREATE BOOKMARK
 	 * {@inheritDoc}
 	 */	
-	public Integer createBookmark(Bookmark instance) {
-		InterfaceDAO<Bookmark> bm_dao =DAOFactory.getBookMarkDAO();
+	public Integer createBookmark(Bookmark instance) {		
 		return bm_dao.create(instance);		
 	}
 	/**
@@ -41,17 +41,14 @@ public class BookmarkServiceImp implements BookmarkServiceInt{
 	 * {@inheritDoc}
 	 */	
 	public List<Bookmark> getAllBookmarks() {
-		InterfaceDAO<Bookmark> bm_dao =DAOFactory.getBookMarkDAO();
 		return bm_dao.getAll();
 	}
-
 	/**
 	 * DELETE ALL BOOKMARKS
 	 * {@inheritDoc}
 	 * @return 
 	 */	
 	public Integer deleteAllBookmarks() {
-		InterfaceDAO<Bookmark> bm_dao =DAOFactory.getBookMarkDAO();
 		return bm_dao.deleteAll();
 	}
 
